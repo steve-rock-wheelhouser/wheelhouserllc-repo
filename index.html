@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheelhouser RPM Repository | Enterprise Linux & Fedora</title>
+    <meta name="description" content="Official RPM package repository for Wheelhouser LLC applications and utilities, supporting Rocky Linux 10 and Fedora 44.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --bg-secondary: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --card-hover: #273549;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.25);
+            --primary-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            --accent-green: #34d399;
+            --code-bg: #030712;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --radius-sm: 6px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(129, 140, 248, 0.08) 0%, transparent 40%);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #7dd3fc;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        /* --- Header --- */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            padding: 1rem 0;
+        }
+
+        .site-header::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--card-border) 20%, var(--primary) 50%, var(--card-border) 80%, transparent 100%);
+            opacity: 0.7;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+        }
+
+        .brand-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #0b1120;
+            box-shadow: 0 0 16px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-nav {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--primary) !important;
+        }
+
+        .btn-nav:hover {
+            background: rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        /* --- Hero --- */
+        .hero {
+            padding: 4.5rem 0 3rem;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .hero-badge-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            box-shadow: 0 0 8px var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto 2rem;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* --- Distribution Tabs & Code Blocks --- */
+        .setup-section {
+            margin-bottom: 4rem;
+        }
+
+        .setup-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        }
+
+        .tabs-nav {
+            display: flex;
+            background: #090e1a;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1.1rem 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            background: var(--bg-secondary);
+        }
+
+        .tab-btn.active::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+        }
+
+        .tab-content {
+            padding: 2rem;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .method-block {
+            margin-bottom: 2rem;
+        }
+
+        .method-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .method-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+
+        .method-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .method-tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-recommended {
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+
+        .tag-manual {
+            background: rgba(148, 163, 184, 0.15);
+            color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        .code-box {
+            position: relative;
+            background: var(--code-bg);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            word-break: break-all;
+        }
+
+        .code-text {
+            color: #38bdf8;
+            user-select: all;
+        }
+
+        .code-prompt {
+            color: var(--text-dim);
+            user-select: none;
+            margin-right: 0.5rem;
+        }
+
+        .copy-btn {
+            background: rgba(51, 65, 85, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: var(--text-muted);
+            padding: 0.45rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary);
+            color: #0b1120;
+            border-color: var(--primary);
+        }
+
+        .copy-btn.copied {
+            background: var(--accent-green) !important;
+            color: #0b1120 !important;
+            border-color: var(--accent-green) !important;
+        }
+
+        /* --- Package Catalog --- */
+        .packages-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        .grid-packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pkg-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .pkg-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.5);
+        }
+
+        .pkg-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .pkg-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            font-family: var(--font-mono);
+        }
+
+        .pkg-arch {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        .pkg-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .pkg-install {
+            background: var(--code-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- Infrastructure & Direct Downloads --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-box p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .info-links {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .info-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            margin-top: auto;
+            background: #060911;
+            border-top: 1px solid rgba(51, 65, 85, 0.4);
+            padding: 2.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 0 2rem;
+            }
+            .tabs-nav {
+                flex-direction: column;
+            }
+            .code-box {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .copy-btn {
+                align-self: flex-end;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="https://wheelhouser.com" class="brand-logo" id="header-brand-link">
+                <div class="brand-icon">W</div>
+                Wheelhouser LLC
+            </a>
+            <nav class="nav-links">
+                <a href="https://wheelhouser.com">Main Website</a>
+                <a href="https://wheelhouser.com#portfolio">Software Portfolio</a>
+                <a href="https://wheelhouser.com#contact" class="btn-nav">Support &amp; Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <div class="hero-badge">
+                <span class="hero-badge-pulse"></span>
+                Official Production RPM Repository
+            </div>
+            <h1>Wheelhouser Linux Package Repository</h1>
+            <p>Unified enterprise repository for Rocky Linux 10 and Fedora 44. Native, signed RPM packages engineered for modern workstations and cloud instances.</p>
+        </section>
+
+        <!-- Distribution Setup Tabs -->
+        <section class="setup-section">
+            <div class="setup-card">
+                <div class="tabs-nav" role="tablist">
+                    <button class="tab-btn active" id="tab-rocky" onclick="switchTab('rocky')" role="tab" aria-selected="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        Rocky Linux 10 / Enterprise Linux
+                    </button>
+                    <button class="tab-btn" id="tab-fedora" onclick="switchTab('fedora')" role="tab" aria-selected="false">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        Fedora Linux 44
+                    </button>
+                </div>
+
+                <!-- Rocky Linux Tab Content -->
+                <div id="content-rocky" class="tab-content active" role="tabpanel">
+                    <div class="method-block">
+                        <div class="method-header">
+                            <span class="method-title">Option 1: Quick Install via Release RPM</span>
+                            <span class="method-tag tag-recommended">Recommended</span>
+                        </div>
+                        <div class="code-box">
+                            <div>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-rocky-rpm">sudo dnf install https://repo.wheelhouser.com/rocky/10/x86_64/steve-rock-wheelhouser-release-1.0-5.el10.noarch.rpm</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyCode('cmd-rocky-rpm', this)" id="btn-copy-rocky-rpm">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="method-block">
+                        <div class="method-header">
+                            <span class="method-title">Option 2: Direct .repo Configuration Setup</span>
+                            <span class="method-tag tag-manual">Manual Setup</span>
+                        </div>
+                        <div class="code-box">
+                            <div>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-rocky-manual">sudo curl -sL https://repo.wheelhouser.com/rocky.repo -o /etc/yum.repos.d/wheelhouser.repo</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyCode('cmd-rocky-manual', this)" id="btn-copy-rocky-manual">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="method-block">
+                        <div class="method-header">
+                            <span class="method-title">Option 3: Import Public GPG Signing Key</span>
+                            <span class="method-tag tag-manual">GPG Signature</span>
+                        </div>
+                        <div class="code-box">
+                            <div>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-rocky-gpg">sudo rpm --import https://repo.wheelhouser.com/steve-rock-wheelhouser-gpg.key</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyCode('cmd-rocky-gpg', this)" id="btn-copy-rocky-gpg">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fedora Tab Content -->
+                <div id="content-fedora" class="tab-content" role="tabpanel">
+                    <div class="method-block">
+                        <div class="method-header">
+                            <span class="method-title">Option 1: Quick Install via Release RPM</span>
+                            <span class="method-tag tag-recommended">Recommended</span>
+                        </div>
+                        <div class="code-box">
+                            <div>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-fedora-rpm">sudo dnf install https://repo.wheelhouser.com/fedora/44/x86_64/steve-rock-wheelhouser-release-1.0-5.fc44.noarch.rpm</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyCode('cmd-fedora-rpm', this)" id="btn-copy-fedora-rpm">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="method-block">
+                        <div class="method-header">
+                            <span class="method-title">Option 2: Direct .repo Configuration Setup</span>
+                            <span class="method-tag tag-manual">Manual Setup</span>
+                        </div>
+                        <div class="code-box">
+                            <div>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-fedora-manual">sudo curl -sL https://repo.wheelhouser.com/fedora.repo -o /etc/yum.repos.d/wheelhouser.repo</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyCode('cmd-fedora-manual', this)" id="btn-copy-fedora-manual">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="method-block">
+                        <div class="method-header">
+                            <span class="method-title">Option 3: Import Public GPG Signing Key</span>
+                            <span class="method-tag tag-manual">GPG Signature</span>
+                        </div>
+                        <div class="code-box">
+                            <div>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-fedora-gpg">sudo rpm --import https://repo.wheelhouser.com/steve-rock-wheelhouser-gpg.key</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyCode('cmd-fedora-gpg', this)" id="btn-copy-fedora-gpg">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Available Packages -->
+        <section class="packages-section">
+            <div class="section-header">
+                <h2>Featured Packages</h2>
+                <p>Install immediately once the repository is configured on your system.</p>
+            </div>
+
+            <div class="grid-packages">
+                <!-- Package 1: Antigravity IDE -->
+                <div class="pkg-card">
+                    <div class="pkg-top">
+                        <div class="pkg-title">antigravity-ide</div>
+                        <span class="pkg-arch">noarch</span>
+                    </div>
+                    <p class="pkg-desc">Official RPM packaging and desktop launcher utility for Google Antigravity IDE on Rocky Linux 10 and Fedora 44.</p>
+                    <div class="pkg-install">
+                        <code>sudo dnf install antigravity-ide</code>
+                        <button class="copy-btn" onclick="copySnippet('sudo dnf install antigravity-ide', this)">Copy</button>
+                    </div>
+                </div>
+
+                <!-- Package 2: Rocky Linux Setup -->
+                <div class="pkg-card">
+                    <div class="pkg-top">
+                        <div class="pkg-title">rocky-linux-setup</div>
+                        <span class="pkg-arch">el10</span>
+                    </div>
+                    <p class="pkg-desc">Post-install workstation optimization, automatic repository coordinator (CRB, EPEL), developer toolchains, and management CLI.</p>
+                    <div class="pkg-install">
+                        <code>sudo dnf install rocky-linux-setup</code>
+                        <button class="copy-btn" onclick="copySnippet('sudo dnf install rocky-linux-setup', this)">Copy</button>
+                    </div>
+                </div>
+
+                <!-- Package 3: Web Browser -->
+                <div class="pkg-card">
+                    <div class="pkg-top">
+                        <div class="pkg-title">web-browser</div>
+                        <span class="pkg-arch">fc44</span>
+                    </div>
+                    <p class="pkg-desc">Fast, lightweight, privacy-focused desktop web browser with native dark mode and PySide6/QtWebEngine desktop integration.</p>
+                    <div class="pkg-install">
+                        <code>sudo dnf install web-browser</code>
+                        <button class="copy-btn" onclick="copySnippet('sudo dnf install web-browser', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Repository Resources & Security -->
+        <section class="info-grid">
+            <div class="info-box">
+                <h3>Direct Repository Files</h3>
+                <p>Direct download access to configuration templates and raw GPG signing keys:</p>
+                <ul class="info-links">
+                    <li><a href="/rocky.repo" download>📄 rocky.repo (DNF Config)</a></li>
+                    <li><a href="/fedora.repo" download>📄 fedora.repo (DNF Config)</a></li>
+                    <li><a href="/steve-rock-wheelhouser-gpg.key" download>🔑 steve-rock-wheelhouser-gpg.key (GPG Public Key)</a></li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3>Automated Provisioning</h3>
+                <p>Deploy Rocky Linux 10 workstations with zero user interaction using our unattended Kickstart profile:</p>
+                <ul class="info-links">
+                    <li><a href="https://github.com/steve-rock-wheelhouser/rocky-linux-setup" target="_blank" rel="noopener">🚀 rocky-linux-setup Repository</a></li>
+                    <li><a href="https://raw.githubusercontent.com/steve-rock-wheelhouser/rocky-linux-setup/main/kickstart/rocky10-workstation.ks" target="_blank" rel="noopener">📋 rocky10-workstation.ks Kickstart Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3>Cryptographic Verification</h3>
+                <p>All RPM packages and <code>repodata/repomd.xml</code> metadata files are signed with Wheelhouser LLC's official 4096-bit RSA packaging key.</p>
+                <p style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--accent-green);">Key ID: 310B962A &bull; Fingerprint verified</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Wheelhouser LLC</strong> &bull; Custom Linux Systems &amp; Software Engineering
+            </div>
+            <div class="footer-links">
+                <a href="https://wheelhouser.com">wheelhouser.com</a>
+                <a href="https://wheelhouser.com/about.html">Company</a>
+                <a href="https://wheelhouser.com/privacy.html">Privacy Policy</a>
+                <a href="https://github.com/steve-rock-wheelhouser">GitHub Organization</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(distro) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            document.getElementById('tab-' + distro).classList.add('active');
+            document.getElementById('content-' + distro).classList.add('active');
+        }
+
+        function copyCode(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            copyTextToClipboard(text, btn);
+        }
+
+        function copySnippet(text, btn) {
+            copyTextToClipboard(text, btn);
+        }
+
+        function copyTextToClipboard(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = "Copied!";
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error("Failed to copy:", err);
+            });
+        }
+    </script>
+</body>
+</html>

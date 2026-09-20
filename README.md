@@ -30,8 +30,13 @@ wheelhouserllc-repo/
 ├── steve-rock-wheelhouser-gpg.key
 ├── rocky.repo
 ├── fedora.repo
+├── index.html
+├── CNAME
+├── .nojekyll
 └── README.md
 ```
+
+**Web Endpoint**: [https://repo.wheelhouser.com](https://repo.wheelhouser.com)
 
 ---
 
@@ -41,12 +46,12 @@ wheelhouserllc-repo/
 
 #### Option A: Install via Release Bootstrap RPM (Recommended)
 ```bash
-sudo dnf install https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky/10/x86_64/steve-rock-wheelhouser-release-1.0-4.el10.noarch.rpm
+sudo dnf install https://repo.wheelhouser.com/rocky/10/x86_64/steve-rock-wheelhouser-release-1.0-5.el10.noarch.rpm
 ```
 
 #### Option B: Manual Setup
 ```bash
-sudo curl -sL https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky.repo -o /etc/yum.repos.d/wheelhouser.repo
+sudo curl -sL https://repo.wheelhouser.com/rocky.repo -o /etc/yum.repos.d/wheelhouser.repo
 ```
 
 ---
@@ -55,12 +60,12 @@ sudo curl -sL https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhous
 
 #### Option A: Install via Release Bootstrap RPM (Recommended)
 ```bash
-sudo dnf install https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/fedora/44/x86_64/steve-rock-wheelhouser-release-1.0-3.fc44.noarch.rpm
+sudo dnf install https://repo.wheelhouser.com/fedora/44/x86_64/steve-rock-wheelhouser-release-1.0-5.fc44.noarch.rpm
 ```
 
 #### Option B: Manual Setup
 ```bash
-sudo curl -sL https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/fedora.repo -o /etc/yum.repos.d/wheelhouser.repo
+sudo curl -sL https://repo.wheelhouser.com/fedora.repo -o /etc/yum.repos.d/wheelhouser.repo
 ```
 
 ---
