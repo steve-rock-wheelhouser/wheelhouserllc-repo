@@ -28,8 +28,8 @@ wheelhouserllc-repo/
 │   │       └── repodata/
 │   └── ...
 ├── steve-rock-wheelhouser-gpg.key
-├── steve-rock-wheelhouser-rocky.repo
-├── steve-rock-wheelhouser-fedora.repo
+├── rocky.repo
+├── fedora.repo
 └── update_repo.sh
 ```
 
@@ -46,7 +46,7 @@ sudo dnf install https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelh
 
 #### Option B: Manual Setup
 ```bash
-sudo curl -sL https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/steve-rock-wheelhouser-rocky.repo -o /etc/yum.repos.d/steve-rock-wheelhouser.repo
+sudo curl -sL https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky.repo -o /etc/yum.repos.d/wheelhouser.repo
 ```
 
 ---
@@ -60,7 +60,7 @@ sudo dnf install https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelh
 
 #### Option B: Manual Setup
 ```bash
-sudo curl -sL https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/steve-rock-wheelhouser-fedora.repo -o /etc/yum.repos.d/steve-rock-wheelhouser.repo
+sudo curl -sL https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/fedora.repo -o /etc/yum.repos.d/wheelhouser.repo
 ```
 
 ---
