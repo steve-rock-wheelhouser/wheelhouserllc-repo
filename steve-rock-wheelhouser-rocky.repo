@@ -1,5 +1,5 @@
 [steve-rock-wheelhouser]
-name=Wheelhouser LLC Custom RPM Repository - Rocky Linux $releasever - $basearch
+name=Wheelhouser LLC RPM Repository - Rocky Linux $releasever - $basearch
 baseurl=https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky/$releasever/$basearch/
 enabled=1
 gpgcheck=1

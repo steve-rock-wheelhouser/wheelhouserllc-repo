@@ -57,7 +57,7 @@ if [ -d ".git" ]; then
         if git remote | grep -q "^origin$"; then
             BRANCH=$(git rev-parse --abbrev-ref HEAD)
             echo "Pushing changes to GitHub ($BRANCH)..."
-            git push origin "$BRANCH" || echo "Warning: Git push failed. Please ensure the repository 'steve-rock-wheelhouser/rocky-repo' exists on GitHub and your SSH keys are set up correctly."
+            git push origin "$BRANCH" || echo "Warning: Git push failed. Please ensure the repository 'steve-rock-wheelhouser/wheelhouserllc-repo' exists on GitHub and your SSH keys are set up correctly."
         else
             echo "Warning: No remote named 'origin' configured. Skipping push."
         fi

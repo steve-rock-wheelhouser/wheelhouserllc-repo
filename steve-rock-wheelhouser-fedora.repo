@@ -1,0 +1,7 @@
+[steve-rock-wheelhouser]
+name=Wheelhouser LLC RPM Repository - Fedora $releasever - $basearch
+baseurl=https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/fedora/$releasever/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/steve-rock-wheelhouser-gpg.key
+metadata_expire=300
