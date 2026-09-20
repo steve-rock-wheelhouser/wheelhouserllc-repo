@@ -30,7 +30,9 @@ We refactored `rocky-repo` from a flat directory into an enterprise-grade hierar
   - Cleans up builds per subtree, maintaining the 2-version retention policy without touching other distributions.
   - Copies the latest release bootstrap package to both subtrees and repo root.
 - **Release Bootstrap Package**:
-  - Rebuilt [steve-rock-wheelhouser-release-1.0-1.el10.noarch.rpm](file:///home/user/Projects/rocky-repo/steve-rock-wheelhouser-release-1.0-1.el10.noarch.rpm) packaging the new dynamic `.repo` file.
+  - Rebuilt [steve-rock-wheelhouser-release-1.0-2.el10.noarch.rpm](file:///home/user/Projects/rocky-repo/steve-rock-wheelhouser-release-1.0-2.el10.noarch.rpm) packaging the new dynamic `.repo` file.
+- **CDN Cache Skew Protection**:
+  - Enhanced [update_repo.sh](file:///home/user/Projects/rocky-repo/update_repo.sh) with `createrepo_c --retain-old-md=3` to retain previous metadata generations, preventing GitHub Fastly CDN edge cache skew (5-minute TTL) from producing 404 errors during client updates.
 
 ---
 
