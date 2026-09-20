@@ -29,7 +29,7 @@ for dir in "${RPM_DIRS[@]}"; do
         continue
     fi
     echo "Creating repodata for subtree: $dir"
-    createrepo_c "$dir"
+    createrepo_c --retain-old-md=3 "$dir"
 done
 
 # Check if Git is initialized
