@@ -8,17 +8,41 @@ cd "$SCRIPT_DIR"
 # Ensure standard system paths are in the PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:${PATH:-}"
 
-echo "Signing Enterprise Linux RPM packages..."
-EL_RPMS=(*.el[0-9]*.rpm)
-if [ -f "${EL_RPMS[0]}" ]; then
-    rpmsign --resign "${EL_RPMS[@]}"
+echo "Locating RPM packages in repository subtrees..."
+mapfile -t ALL_RPMS < <(find . -type f -name "*.rpm" -not -path "*/repodata/*" | sort)
+
+if [ "${#ALL_RPMS[@]}" -eq 0 ]; then
+    echo "No RPM packages found in repository."
+    exit 0
 fi
 
-echo "Generating RPM repository metadata..."
-createrepo_c .
+echo "Signing RPM packages (${#ALL_RPMS[@]} total)..."
+rpmsign --resign "${ALL_RPMS[@]}"
+
+echo "Generating scoped RPM repository metadata per architecture/version..."
+# Find all unique directories containing RPMs (e.g., 10/x86_64, 10/aarch64)
+mapfile -t RPM_DIRS < <(for rpm in "${ALL_RPMS[@]}"; do dirname "$rpm"; done | sort -u)
+
+for dir in "${RPM_DIRS[@]}"; do
+    # Skip root directory if any bootstrap RPM sits there; metadata belongs in subtrees
+    if [ "$dir" == "." ]; then
+        continue
+    fi
+    echo "Creating repodata for subtree: $dir"
+    createrepo_c "$dir"
+done
 
 # Check if Git is initialized
 if [ -d ".git" ]; then
+    # Security audit before staging
+    SENSITIVE_FILES=$(git status --porcelain | awk '{print $2}' | grep -E '\.(key|pem|asc|p12|env.*)$' || true)
+    if [[ -n "${SENSITIVE_FILES}" ]]; then
+        echo "❌ ERROR: Sensitive file(s) detected in repository:"
+        echo "${SENSITIVE_FILES}"
+        echo "Aborting commit to prevent accidental secret leak."
+        exit 1
+    fi
+
     echo "Staging changes in Git..."
     git add -A
     
