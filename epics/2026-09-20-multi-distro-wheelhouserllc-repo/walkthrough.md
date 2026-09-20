@@ -1,15 +1,23 @@
-# Walkthrough: Multi-Distribution RPM Repository Migration (`wheelhouserllc-repo`)
+# Walkthrough: Multi-Distribution RPM Repository Migration & Decoupling
 
-We migrated and renamed `rocky-repo` to `wheelhouserllc-repo`, transitioning to the enterprise multi-distribution RPM repository hierarchy (`<distro>/<releasever>/<basearch>/`) adhering to the updated [AGENTS.md Section 7](file:///home/user/Projects/AGENTS.md#7-rpm-repository-hierarchy--architecture-standards).
+We migrated and renamed `rocky-repo` to `wheelhouserllc-repo`, transitioning to the enterprise multi-distribution RPM repository hierarchy (`<distro>/<releasever>/<basearch>/`) adhering to the updated [AGENTS.md Section 7](file:///home/user/Projects/AGENTS.md#7-rpm-repository-hierarchy--architecture-standards), and fully decoupled repository release packaging from the `antigravity-ide` application.
 
 ---
 
 ## Changes Summary
 
-### 1. Repository Rename & Reorganization
+### 1. Repository Rename & Decoupling Cleanup
 - **Directory Rename**: Moved `/home/user/Projects/rocky-repo` to `/home/user/Projects/wheelhouserllc-repo`.
 - **Git Remote**: Updated origin remote to `git@github.com:steve-rock-wheelhouser/wheelhouserllc-repo.git`.
-- **Multi-Distro Hierarchy**: Reorganized packages into dedicated distribution namespaces:
+- **Architectural Decoupling**:
+  - Moved [steve-rock-wheelhouser-release.spec](file:///home/user/Projects/wheelhouserllc-repo/steve-rock-wheelhouser-release.spec) and [build_release_rpm.sh](file:///home/user/Projects/wheelhouserllc-repo/build_release_rpm.sh) into `wheelhouserllc-repo/`.
+  - Added [.gitignore](file:///home/user/Projects/wheelhouserllc-repo/.gitignore) to `wheelhouserllc-repo/` per `AGENTS.md Section 2.1`.
+  - Removed loose `steve-rock-wheelhouser-release-*.rpm` and build caches from `antigravity-ide/`.
+  - Refactored [publish.sh](file:///home/user/Projects/antigravity-ide/publish.sh) to focus strictly on publishing application RPMs.
+  - Updated [CONTRIBUTING.md](file:///home/user/Projects/antigravity-ide/CONTRIBUTING.md) to keep application development instructions clean.
+
+### 2. Multi-Distro Tree Hierarchy
+- Packages and repository metadata are now strictly segregated by distribution, release version, and CPU architecture:
   ```text
   wheelhouserllc-repo/
   ├── rocky/
@@ -30,20 +38,18 @@ We migrated and renamed `rocky-repo` to `wheelhouserllc-repo`, transitioning to 
   ├── steve-rock-wheelhouser-fedora.repo
   ├── steve-rock-wheelhouser.repo
   ├── steve-rock-wheelhouser-gpg.key
-  └── update_repo.sh
+  ├── steve-rock-wheelhouser-release.spec
+  ├── build_release_rpm.sh
+  ├── update_repo.sh
+  └── README.md
   ```
 
-### 2. DNF Configuration & Release Packaging
+### 3. DNF Configuration & Self-Contained Release Packaging
 - **Distribution Configs**: Created dedicated [steve-rock-wheelhouser-rocky.repo](file:///home/user/Projects/wheelhouserllc-repo/steve-rock-wheelhouser-rocky.repo) and [steve-rock-wheelhouser-fedora.repo](file:///home/user/Projects/wheelhouserllc-repo/steve-rock-wheelhouser-fedora.repo) leveraging `$releasever` and `$basearch`:
   ```ini
   baseurl=https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky/$releasever/$basearch/
   ```
-- **Dynamic Release Spec**: Updated [steve-rock-wheelhouser-release.spec](file:///home/user/Projects/antigravity-ide/steve-rock-wheelhouser-release.spec) to version `1.0-3%{?dist}`. It packages the appropriate `.repo` file dynamically based on whether it is built for Fedora (`%if 0%{?fedora}`) or Enterprise Linux (`%else`).
-- **Build Release Script**: Enhanced [build_release_rpm.sh](file:///home/user/Projects/antigravity-ide/build_release_rpm.sh) to support `--target rocky` and `--target fedora`.
-
-### 3. Publishing Pipeline Automation
-- **Multi-Distro Routing**: Refactored [publish.sh](file:///home/user/Projects/antigravity-ide/publish.sh) to inspect `%{RELEASE}` tags (`.el10` -> `rocky/10/`, `.fc44` -> `fedora/44/`) and distribute `noarch` packages automatically into both `x86_64` and `aarch64` subtrees.
-- **Metadata Retention**: Kept `createrepo_c --retain-old-md=3` in [update_repo.sh](file:///home/user/Projects/wheelhouserllc-repo/update_repo.sh) to prevent edge CDN cache skew (404s).
+- **Self-Contained Builder**: `wheelhouserllc-repo/build_release_rpm.sh` now independently builds, signs, and deploys release packages to both `rocky/` and `fedora/` subtrees, then triggers `update_repo.sh`.
 
 ### 4. Governance & Setup Scripts
 - **Baseline Standards**: Updated [AGENTS.md](file:///home/user/Projects/AGENTS.md) Section 1 and Section 7 to establish the `<distro>/<releasever>/<basearch>/` layout standard.
@@ -53,18 +59,17 @@ We migrated and renamed `rocky-repo` to `wheelhouserllc-repo`, transitioning to 
 
 ## Verification Results
 
-### 1. Release RPM Build Verification
-Executed `./build_release_rpm.sh` for both distribution targets:
-- Built and signed `steve-rock-wheelhouser-release-1.0-3.el10.noarch.rpm`
-- Built and signed `steve-rock-wheelhouser-release-1.0-3.fc44.noarch.rpm`
-- Verified RPM payload using `rpm2cpio`: correctly contained `baseurl=https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky/$releasever/$basearch/`.
+### 1. Self-Contained Release RPM Build in `wheelhouserllc-repo`
+Ran `./build_release_rpm.sh --target rocky` inside `wheelhouserllc-repo/`:
+- Successfully compiled and signed `steve-rock-wheelhouser-release-1.0-3.el10.noarch.rpm`.
+- Deployed directly into `rocky/10/x86_64/` and `rocky/10/aarch64/`.
+- Scoped `repodata/` updated via `createrepo_c --retain-old-md=3`.
+- Automatically committed and successfully pushed to remote `main -> main` at `git@github.com:steve-rock-wheelhouser/wheelhouserllc-repo.git`.
 
-### 2. Publishing Pipeline Verification
-Executed `./publish.sh --target rocky`:
-- Routed packages into `wheelhouserllc-repo/rocky/10/x86_64` and `wheelhouserllc-repo/rocky/10/aarch64`.
-- Signed all 9 RPM packages using GPG key `Wheelhouser LLC (Automated Release Pipeline)`.
-- Scoped `repodata/` generated via `createrepo_c --retain-old-md=3`.
-- Git commit created: `Update repository metadata and packages: 2026-09-20 10:12:43`.
+### 2. Application Publishing Verification
+Ran `./publish.sh --target rocky` inside `antigravity-ide/`:
+- Successfully published `antigravity-ide-1.0.0-20.el10.noarch.rpm` into `wheelhouserllc-repo/rocky/10/`.
+- Repositories stayed completely clean with zero untracked or stale files.
 
 ### 3. Local DNF Query Verification
 Ran DNF repoquery against `rocky/10/x86_64`:
@@ -73,17 +78,3 @@ dnf --disablerepo="*" --repofrompath="test-wheelhouser,/home/user/Projects/wheel
 ```
 - Resolved `antigravity-ide-1.0.0-19.el10` and `antigravity-ide-1.0.0-20.el10`.
 - Verified release package `steve-rock-wheelhouser-release-1.0-3.el10` resolved cleanly.
-
----
-
-## Next Steps for User
-
-> [!NOTE]
-> 1. **GitHub Repository Rename**:
->    On GitHub, go to **https://github.com/steve-rock-wheelhouser/rocky-repo/settings** and rename the repository to `wheelhouserllc-repo`.
-> 2. **Push to Remote**:
->    Once renamed on GitHub, push the local changes:
->    ```bash
->    cd /home/user/Projects/wheelhouserllc-repo && git push origin main
->    cd /home/user/Projects/antigravity-ide && git push origin main
->    ```
