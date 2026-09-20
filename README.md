@@ -41,7 +41,7 @@ wheelhouserllc-repo/
 
 #### Option A: Install via Release Bootstrap RPM (Recommended)
 ```bash
-sudo dnf install https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky/10/x86_64/steve-rock-wheelhouser-release-1.0-3.el10.noarch.rpm
+sudo dnf install https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky/10/x86_64/steve-rock-wheelhouser-release-1.0-4.el10.noarch.rpm
 ```
 
 #### Option B: Manual Setup
@@ -69,7 +69,17 @@ sudo curl -sL https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhous
 
 Once the repository is configured:
 
-* **`antigravity-ide`**: Open-source packaging and launcher utility for Google Antigravity IDE.
+* **`antigravity-ide`**: Open-source packaging and launcher utility for Google Antigravity IDE (Rocky Linux 10, Fedora 44).
   ```bash
   sudo dnf install antigravity-ide
+  ```
+
+* **`rocky-linux-setup`**: Post-install workstation optimization, bootstrap, and system configuration utility (Rocky Linux 10).
+  ```bash
+  sudo dnf install rocky-linux-setup
+  ```
+
+* **`web-browser`**: Fast, lightweight, privacy-focused desktop web browser (Fedora 44).
+  ```bash
+  sudo dnf install web-browser
   ```
