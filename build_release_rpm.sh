@@ -103,10 +103,6 @@ for dest in "${DISTRO_SUBDIRS[@]}"; do
     fi
 done
 
-# Retain root-level copy if rocky
-if [ "$TARGET" == "rocky" ]; then
-    cp "$RPMBUILD_DIR"/RPMS/*/*.rpm "$REPO_DIR/"
-fi
 
 # Clean up build dir
 rm -rf "$RPMBUILD_DIR"
