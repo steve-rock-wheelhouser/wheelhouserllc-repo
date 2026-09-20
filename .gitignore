@@ -6,6 +6,7 @@
 *-secret.*
 .env*
 !*-gpg.key
+!repomd.xml.asc
 
 # Build artifacts & packaging caches
 rpmbuild/
