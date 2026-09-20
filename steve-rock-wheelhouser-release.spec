@@ -5,8 +5,8 @@ Summary:        Steve Rock Wheelhouser repository configuration
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/steve-rock-wheelhouser/wheelhouserllc-repo
-Source0:        steve-rock-wheelhouser-rocky.repo
-Source1:        steve-rock-wheelhouser-fedora.repo
+Source0:        rocky.repo
+Source1:        fedora.repo
 Source2:        steve-rock-wheelhouser-gpg.key
 
 BuildArch:      noarch

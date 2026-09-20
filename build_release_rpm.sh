@@ -60,8 +60,8 @@ echo "Building release RPM for: $REPO_NAME"
 
 RPMBUILD_DIR="$REPO_DIR/rpmbuild-release"
 SPEC_FILE="$REPO_DIR/steve-rock-wheelhouser-release.spec"
-ROCKY_REPO_FILE="$REPO_DIR/steve-rock-wheelhouser-rocky.repo"
-FEDORA_REPO_FILE="$REPO_DIR/steve-rock-wheelhouser-fedora.repo"
+ROCKY_REPO_FILE="$REPO_DIR/rocky.repo"
+FEDORA_REPO_FILE="$REPO_DIR/fedora.repo"
 GPG_KEY="$REPO_DIR/steve-rock-wheelhouser-gpg.key"
 
 # Verify files exist
@@ -77,8 +77,8 @@ rm -rf "$RPMBUILD_DIR"
 mkdir -p "$RPMBUILD_DIR"/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 
 echo "Copying sources..."
-cp "$ROCKY_REPO_FILE" "$RPMBUILD_DIR/SOURCES/steve-rock-wheelhouser-rocky.repo"
-cp "$FEDORA_REPO_FILE" "$RPMBUILD_DIR/SOURCES/steve-rock-wheelhouser-fedora.repo"
+cp "$ROCKY_REPO_FILE" "$RPMBUILD_DIR/SOURCES/rocky.repo"
+cp "$FEDORA_REPO_FILE" "$RPMBUILD_DIR/SOURCES/fedora.repo"
 cp "$GPG_KEY" "$RPMBUILD_DIR/SOURCES/steve-rock-wheelhouser-gpg.key"
 cp "$SPEC_FILE" "$RPMBUILD_DIR/SPECS/steve-rock-wheelhouser-release.spec"
 

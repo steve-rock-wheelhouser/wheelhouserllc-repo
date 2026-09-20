@@ -1,7 +1,0 @@
-[steve-rock-wheelhouser]
-name=Wheelhouser LLC RPM Repository - Rocky Linux $releasever - $basearch
-baseurl=https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky/$releasever/$basearch/
-enabled=1
-gpgcheck=1
-gpgkey=https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/steve-rock-wheelhouser-gpg.key
-metadata_expire=300
