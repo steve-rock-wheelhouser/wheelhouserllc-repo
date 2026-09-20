@@ -33,27 +33,34 @@ We migrated and renamed `rocky-repo` to `wheelhouserllc-repo`, transitioning to 
   ├── fedora/
   │   └── 44/
   │       ├── x86_64/
+  │       │   ├── web-browser-*.fc44.noarch.rpm
+  │       │   ├── antigravity-ide-*.fc44.noarch.rpm
+  │       │   ├── steve-rock-wheelhouser-release-1.0-3.fc44.noarch.rpm
+  │       │   └── repodata/
   │       └── aarch64/
-  ├── steve-rock-wheelhouser-rocky.repo
-  ├── steve-rock-wheelhouser-fedora.repo
-  ├── steve-rock-wheelhouser.repo
+  │           └── ...
+  ├── scripts/
+  │   ├── update_repo.sh
+  │   └── build_release_rpm.sh
   ├── steve-rock-wheelhouser-gpg.key
   ├── steve-rock-wheelhouser-release.spec
-  ├── build_release_rpm.sh
-  ├── update_repo.sh
+  ├── rocky.repo
+  ├── fedora.repo
   └── README.md
   ```
 
 ### 3. DNF Configuration & Self-Contained Release Packaging
-- **Distribution Configs**: Created dedicated [steve-rock-wheelhouser-rocky.repo](file:///home/user/Projects/wheelhouserllc-repo/steve-rock-wheelhouser-rocky.repo) and [steve-rock-wheelhouser-fedora.repo](file:///home/user/Projects/wheelhouserllc-repo/steve-rock-wheelhouser-fedora.repo) leveraging `$releasever` and `$basearch`:
+- **Concise Distribution Configs**: Created clean, concise [rocky.repo](file:///home/user/Projects/wheelhouserllc-repo/rocky.repo) and [fedora.repo](file:///home/user/Projects/wheelhouserllc-repo/fedora.repo) leveraging `$releasever` and `$basearch`:
   ```ini
   baseurl=https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky/$releasever/$basearch/
   ```
-- **Self-Contained Builder**: `wheelhouserllc-repo/build_release_rpm.sh` now independently builds, signs, and deploys release packages to both `rocky/` and `fedora/` subtrees, then triggers `update_repo.sh`.
+- **Self-Contained Builder**: `wheelhouserllc-repo/scripts/build_release_rpm.sh` independently builds, signs, and deploys release packages to both `rocky/` and `fedora/` subtrees, then triggers `update_repo.sh`.
+- **Maintainer Scripts Relocation**: Moved `update_repo.sh` and `build_release_rpm.sh` into `scripts/` so end-users inspecting the repository root see only client configuration files, documentation, and distribution subtrees.
+- **Deprecation of `fedora-repo`**: Ingested active packages into `wheelhouserllc-repo/fedora/44/`, deployed migration release RPM `steve-rock-wheelhouser-release-1.0-3.fc44.noarch.rpm` into `fedora-repo` to seamlessly switch users to `wheelhouserllc-repo` upon running `dnf update`, and updated `fedora-repo/README.md` with deprecation guidance.
 
 ### 4. Governance & Setup Scripts
-- **Baseline Standards**: Updated [AGENTS.md](file:///home/user/Projects/AGENTS.md) Section 1 and Section 7 to establish the `<distro>/<releasever>/<basearch>/` layout standard.
-- **Client Setup**: Updated [setup.sh](file:///home/user/setup/setup.sh) and [README.md](file:///home/user/Projects/antigravity-ide/README.md) with the new repository URL paths.
+- **Baseline Standards**: Updated [AGENTS.md](file:///home/user/Projects/AGENTS.md) Section 1, Section 4.4, and Section 7 to establish the `<distro>/<releasever>/<basearch>/` layout and `scripts/update_repo.sh` path standard.
+- **Client Setup & Publishing**: Updated [setup.sh](file:///home/user/setup/setup.sh), [publish.sh](file:///home/user/Projects/antigravity-ide/publish.sh), and [README.md](file:///home/user/Projects/antigravity-ide/README.md) with the new repository and script paths.
 
 ---
 
