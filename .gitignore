@@ -1,0 +1,16 @@
+# Keys and credentials
+*.pem
+*.asc
+*.p12
+*-secret.*
+.env*
+!*-gpg.key
+
+# Build artifacts & packaging caches
+rpmbuild/
+rpmbuild-release/
+build/
+dist/
+target/
+__pycache__/
+*.pyc
