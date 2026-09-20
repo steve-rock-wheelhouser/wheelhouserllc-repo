@@ -39,11 +39,7 @@ We migrated and renamed `rocky-repo` to `wheelhouserllc-repo`, transitioning to 
   │       │   └── repodata/
   │       └── aarch64/
   │           └── ...
-  ├── scripts/
-  │   ├── update_repo.sh
-  │   └── build_release_rpm.sh
   ├── steve-rock-wheelhouser-gpg.key
-  ├── steve-rock-wheelhouser-release.spec
   ├── rocky.repo
   ├── fedora.repo
   └── README.md
@@ -54,8 +50,8 @@ We migrated and renamed `rocky-repo` to `wheelhouserllc-repo`, transitioning to 
   ```ini
   baseurl=https://raw.githubusercontent.com/steve-rock-wheelhouser/wheelhouserllc-repo/main/rocky/$releasever/$basearch/
   ```
-- **Self-Contained Builder**: `wheelhouserllc-repo/scripts/build_release_rpm.sh` independently builds, signs, and deploys release packages to both `rocky/` and `fedora/` subtrees, then triggers `update_repo.sh`.
-- **Maintainer Scripts Relocation**: Moved `update_repo.sh` and `build_release_rpm.sh` into `scripts/` so end-users inspecting the repository root see only client configuration files, documentation, and distribution subtrees.
+- **Self-Contained Builder**: `Projects/scripts/build_release_rpm.sh` independently builds, signs, and deploys release packages to both `rocky/` and `fedora/` subtrees, then triggers `update_repo.sh`.
+- **Maintainer Scripts Relocation to `Projects/scripts/`**: Moved `update_repo.sh`, `build_release_rpm.sh`, and `steve-rock-wheelhouser-release.spec` out of `wheelhouserllc-repo` entirely into `/home/user/Projects/scripts/` so the public repository contains only public client configuration files, documentation, and distribution subtrees.
 - **Deprecation of `fedora-repo`**: Ingested active packages into `wheelhouserllc-repo/fedora/44/`, deployed migration release RPM `steve-rock-wheelhouser-release-1.0-3.fc44.noarch.rpm` into `fedora-repo` to seamlessly switch users to `wheelhouserllc-repo` upon running `dnf update`, and updated `fedora-repo/README.md` with deprecation guidance.
 
 ### 4. Governance & Setup Scripts
