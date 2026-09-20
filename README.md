@@ -27,13 +27,10 @@ wheelhouserllc-repo/
 │   │       ├── *.rpm
 │   │       └── repodata/
 │   └── ...
-├── scripts/
-│   ├── update_repo.sh
-│   └── build_release_rpm.sh
 ├── steve-rock-wheelhouser-gpg.key
-├── steve-rock-wheelhouser-release.spec
 ├── rocky.repo
-└── fedora.repo
+├── fedora.repo
+└── README.md
 ```
 
 ---
