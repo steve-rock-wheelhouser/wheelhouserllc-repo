@@ -515,6 +515,22 @@
             transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
+        .pkg-icon-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+        }
+
         .pkg-card:hover .pkg-icon-wrap {
             transform: scale(1.06);
             border-color: rgba(56, 189, 248, 0.4);
@@ -533,12 +549,45 @@
             flex-direction: column;
         }
 
+        .pkg-title-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: color 0.2s ease;
+        }
+
+        .pkg-title-link:hover {
+            color: var(--primary);
+        }
+
         .pkg-title {
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-main);
             font-family: var(--font-mono);
             letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .pkg-title-link:hover .pkg-title {
+            color: var(--primary);
+        }
+
+        .pkg-link-icon {
+            opacity: 0.4;
+            transform: translate(-1px, 1px);
+            transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .pkg-card:hover .pkg-link-icon,
+        .pkg-title-link:hover .pkg-link-icon {
+            opacity: 1;
+            transform: translate(0, 0);
+            color: var(--primary);
         }
 
         .pkg-vendor {
@@ -577,6 +626,56 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .pkg-footer {
+            margin-top: 1rem;
+            padding-top: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pkg-product-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            transition: gap 0.2s ease, color 0.2s ease;
+        }
+
+        .pkg-product-btn:hover {
+            color: #7dd3fc;
+            gap: 0.65rem;
+        }
+
+        .pkg-product-btn svg {
+            transition: transform 0.2s ease;
+        }
+
+        .pkg-product-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        .pkg-status-badge {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .pkg-status-badge::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
         }
 
         /* --- Infrastructure & Direct Downloads --- */
@@ -942,11 +1041,14 @@
                 <div class="pkg-card">
                     <div class="pkg-top">
                         <div class="pkg-header-main">
-                            <div class="pkg-icon-wrap">
+                            <a href="https://wheelhouser.com/products/antigravity-ide.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Google Antigravity IDE Product Details">
                                 <img src="assets/icons/antigravity-ide.png" alt="Antigravity IDE icon" class="pkg-icon">
-                            </div>
+                            </a>
                             <div class="pkg-title-group">
-                                <div class="pkg-title">antigravity-ide</div>
+                                <a href="https://wheelhouser.com/products/antigravity-ide.html" target="_blank" rel="noopener" class="pkg-title-link" title="View Google Antigravity IDE Product Details">
+                                    <span class="pkg-title">antigravity-ide</span>
+                                    <svg class="pkg-link-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
                                 <span class="pkg-vendor">Wheelhouser LLC</span>
                             </div>
                         </div>
@@ -966,17 +1068,27 @@
                             <span class="copy-label">Copy</span>
                         </button>
                     </div>
+                    <div class="pkg-footer">
+                        <span class="pkg-status-badge">Production Ready</span>
+                        <a href="https://wheelhouser.com/products/antigravity-ide.html" target="_blank" rel="noopener" class="pkg-product-btn">
+                            <span>Product Details &amp; Docs</span>
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Package 2: Rocky Linux Setup -->
                 <div class="pkg-card">
                     <div class="pkg-top">
                         <div class="pkg-header-main">
-                            <div class="pkg-icon-wrap">
+                            <a href="https://wheelhouser.com/products/rocky-linux-setup.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Rocky Linux Setup Product Details">
                                 <img src="assets/icons/rocky-linux-setup.svg" alt="Rocky Linux Setup icon" class="pkg-icon">
-                            </div>
+                            </a>
                             <div class="pkg-title-group">
-                                <div class="pkg-title">rocky-linux-setup</div>
+                                <a href="https://wheelhouser.com/products/rocky-linux-setup.html" target="_blank" rel="noopener" class="pkg-title-link" title="View Rocky Linux Setup Product Details">
+                                    <span class="pkg-title">rocky-linux-setup</span>
+                                    <svg class="pkg-link-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
                                 <span class="pkg-vendor">Wheelhouser LLC</span>
                             </div>
                         </div>
@@ -996,17 +1108,27 @@
                             <span class="copy-label">Copy</span>
                         </button>
                     </div>
+                    <div class="pkg-footer">
+                        <span class="pkg-status-badge">Production Ready</span>
+                        <a href="https://wheelhouser.com/products/rocky-linux-setup.html" target="_blank" rel="noopener" class="pkg-product-btn">
+                            <span>Product Details &amp; CLI</span>
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Package 3: Web Browser -->
                 <div class="pkg-card">
                     <div class="pkg-top">
                         <div class="pkg-header-main">
-                            <div class="pkg-icon-wrap">
+                            <a href="https://wheelhouser.com/products/web-browser.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Web Browser Product Details">
                                 <img src="assets/icons/web-browser.png" alt="Web Browser icon" class="pkg-icon">
-                            </div>
+                            </a>
                             <div class="pkg-title-group">
-                                <div class="pkg-title">web-browser</div>
+                                <a href="https://wheelhouser.com/products/web-browser.html" target="_blank" rel="noopener" class="pkg-title-link" title="View Web Browser Product Details">
+                                    <span class="pkg-title">web-browser</span>
+                                    <svg class="pkg-link-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
                                 <span class="pkg-vendor">Wheelhouser LLC</span>
                             </div>
                         </div>
@@ -1026,17 +1148,27 @@
                             <span class="copy-label">Copy</span>
                         </button>
                     </div>
+                    <div class="pkg-footer">
+                        <span class="pkg-status-badge">Production Ready</span>
+                        <a href="https://wheelhouser.com/products/web-browser.html" target="_blank" rel="noopener" class="pkg-product-btn">
+                            <span>Product Details &amp; Screenshots</span>
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Package 4: Text Editor -->
                 <div class="pkg-card">
                     <div class="pkg-top">
                         <div class="pkg-header-main">
-                            <div class="pkg-icon-wrap">
+                            <a href="https://wheelhouser.com/products/text-editor.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Text Editor Product Details">
                                 <img src="assets/icons/text-editor.png" alt="Text Editor icon" class="pkg-icon">
-                            </div>
+                            </a>
                             <div class="pkg-title-group">
-                                <div class="pkg-title">text-editor</div>
+                                <a href="https://wheelhouser.com/products/text-editor.html" target="_blank" rel="noopener" class="pkg-title-link" title="View Text Editor Product Details">
+                                    <span class="pkg-title">text-editor</span>
+                                    <svg class="pkg-link-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
                                 <span class="pkg-vendor">Wheelhouser LLC</span>
                             </div>
                         </div>
@@ -1055,6 +1187,13 @@
                             </svg>
                             <span class="copy-label">Copy</span>
                         </button>
+                    </div>
+                    <div class="pkg-footer">
+                        <span class="pkg-status-badge">Production Ready</span>
+                        <a href="https://wheelhouser.com/products/text-editor.html" target="_blank" rel="noopener" class="pkg-product-btn">
+                            <span>Product Details &amp; Screenshots</span>
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
                     </div>
                 </div>
             </div>
