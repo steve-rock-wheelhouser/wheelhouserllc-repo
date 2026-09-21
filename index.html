@@ -106,6 +106,20 @@
             letter-spacing: -0.02em;
         }
 
+        .brand-logo-img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.45));
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .brand-logo:hover .brand-logo-img {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.7));
+        }
+
         .brand-icon {
             width: 34px;
             height: 34px;
@@ -262,6 +276,25 @@
             right: 0;
             height: 3px;
             background: var(--primary-gradient);
+        }
+
+        .tab-distro-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            flex-shrink: 0;
+            display: inline-block;
+            vertical-align: middle;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .tab-btn:hover .tab-distro-icon {
+            transform: scale(1.12);
+        }
+
+        .tab-btn.active .tab-distro-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.45));
         }
 
         .tab-content {
@@ -648,7 +681,7 @@
     <header class="site-header">
         <div class="container header-content">
             <a href="https://wheelhouser.com" class="brand-logo" id="header-brand-link">
-                <div class="brand-icon">W</div>
+                <img src="assets/icons/wheelhouser-04.png" alt="Wheelhouser Logo" class="brand-logo-img">
                 Wheelhouser LLC
             </a>
             <nav class="nav-links">
@@ -675,15 +708,15 @@
             <div class="setup-card">
                 <div class="tabs-nav" role="tablist">
                     <button class="tab-btn active" id="tab-rocky" onclick="switchTab('rocky')" role="tab" aria-selected="true">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        <img src="assets/icons/rocky.svg" alt="Rocky Linux" class="tab-distro-icon">
                         Rocky Linux 10 / Enterprise Linux
                     </button>
                     <button class="tab-btn" id="tab-almalinux" onclick="switchTab('almalinux')" role="tab" aria-selected="false">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        <img src="assets/icons/almalinux.svg" alt="AlmaLinux" class="tab-distro-icon">
                         AlmaLinux 10
                     </button>
                     <button class="tab-btn" id="tab-fedora" onclick="switchTab('fedora')" role="tab" aria-selected="false">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        <img src="assets/icons/fedora.svg" alt="Fedora Linux" class="tab-distro-icon">
                         Fedora Linux 44
                     </button>
                 </div>
