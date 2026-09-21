@@ -346,32 +346,68 @@
         }
 
         .copy-btn {
-            background: rgba(51, 65, 85, 0.6);
-            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(51, 65, 85, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.25);
             color: var(--text-muted);
-            padding: 0.45rem 0.85rem;
+            padding: 0.4rem 0.75rem;
             border-radius: var(--radius-sm);
             font-size: 0.8rem;
             font-family: var(--font-sans);
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            transition: all 0.2s ease;
+            gap: 0.45rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
+            user-select: none;
+            position: relative;
         }
 
         .copy-btn:hover {
-            background: var(--primary);
-            color: #0b1120;
-            border-color: var(--primary);
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--primary);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 12px var(--primary-glow);
+            transform: translateY(-1px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .copy-btn svg {
+            flex-shrink: 0;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .copy-btn .copy-icon {
+            display: block;
+        }
+
+        .copy-btn .check-icon {
+            display: none;
         }
 
         .copy-btn.copied {
-            background: var(--accent-green) !important;
-            color: #0b1120 !important;
-            border-color: var(--accent-green) !important;
+            background: rgba(52, 211, 153, 0.2) !important;
+            color: var(--accent-green) !important;
+            border-color: rgba(52, 211, 153, 0.6) !important;
+            box-shadow: 0 0 14px rgba(52, 211, 153, 0.3) !important;
+        }
+
+        .copy-btn.copied .copy-icon {
+            display: none;
+        }
+
+        .copy-btn.copied .check-icon {
+            display: block;
+            animation: checkmarkPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes checkmarkPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         /* --- Package Catalog --- */
@@ -421,24 +457,73 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            gap: 0.75rem;
+        }
+
+        .pkg-header-main {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pkg-icon-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .pkg-card:hover .pkg-icon-wrap {
+            transform: scale(1.06);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 6px 16px var(--primary-glow);
+        }
+
+        .pkg-icon {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .pkg-title-group {
+            display: flex;
+            flex-direction: column;
         }
 
         .pkg-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-main);
             font-family: var(--font-mono);
+            letter-spacing: -0.01em;
+        }
+
+        .pkg-vendor {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-weight: 500;
+            margin-top: 0.15rem;
         }
 
         .pkg-arch {
             font-size: 0.75rem;
-            padding: 0.2rem 0.5rem;
+            padding: 0.25rem 0.55rem;
             background: rgba(56, 189, 248, 0.1);
             color: var(--primary);
             border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: var(--radius-sm);
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .pkg-desc {
@@ -612,9 +697,18 @@
                         </div>
                         <div class="code-box">
                             <div>
-                                <span class="code-prompt">$</span><span class="code-text" id="cmd-rocky-rpm">sudo dnf install https://repo.wheelhouser.com/rocky/10/x86_64/steve-rock-wheelhouser-release-1.0-5.el10.noarch.rpm</span>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-rocky-rpm">sudo dnf install https://repo.wheelhouser.com/rocky/10/x86_64/steve-rock-wheelhouser-release-1.0-6.el10.noarch.rpm</span>
                             </div>
-                            <button class="copy-btn" onclick="copyCode('cmd-rocky-rpm', this)" id="btn-copy-rocky-rpm">Copy</button>
+                            <button class="copy-btn" onclick="copyCode('cmd-rocky-rpm', this)" id="btn-copy-rocky-rpm" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
 
@@ -627,7 +721,16 @@
                             <div>
                                 <span class="code-prompt">$</span><span class="code-text" id="cmd-rocky-manual">sudo curl -sL https://repo.wheelhouser.com/rocky.repo -o /etc/yum.repos.d/wheelhouser.repo</span>
                             </div>
-                            <button class="copy-btn" onclick="copyCode('cmd-rocky-manual', this)" id="btn-copy-rocky-manual">Copy</button>
+                            <button class="copy-btn" onclick="copyCode('cmd-rocky-manual', this)" id="btn-copy-rocky-manual" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
 
@@ -640,7 +743,16 @@
                             <div>
                                 <span class="code-prompt">$</span><span class="code-text" id="cmd-rocky-gpg">sudo rpm --import https://repo.wheelhouser.com/steve-rock-wheelhouser-gpg.key</span>
                             </div>
-                            <button class="copy-btn" onclick="copyCode('cmd-rocky-gpg', this)" id="btn-copy-rocky-gpg">Copy</button>
+                            <button class="copy-btn" onclick="copyCode('cmd-rocky-gpg', this)" id="btn-copy-rocky-gpg" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -656,7 +768,16 @@
                             <div>
                                 <span class="code-prompt">$</span><span class="code-text" id="cmd-alma-rpm">sudo dnf install https://repo.wheelhouser.com/almalinux/10/x86_64/steve-rock-wheelhouser-release-1.0-6.el10.noarch.rpm</span>
                             </div>
-                            <button class="copy-btn" onclick="copyCode('cmd-alma-rpm', this)" id="btn-copy-alma-rpm">Copy</button>
+                            <button class="copy-btn" onclick="copyCode('cmd-alma-rpm', this)" id="btn-copy-alma-rpm" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
 
@@ -669,7 +790,16 @@
                             <div>
                                 <span class="code-prompt">$</span><span class="code-text" id="cmd-alma-manual">sudo curl -sL https://repo.wheelhouser.com/almalinux.repo -o /etc/yum.repos.d/wheelhouser.repo</span>
                             </div>
-                            <button class="copy-btn" onclick="copyCode('cmd-alma-manual', this)" id="btn-copy-alma-manual">Copy</button>
+                            <button class="copy-btn" onclick="copyCode('cmd-alma-manual', this)" id="btn-copy-alma-manual" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
 
@@ -682,7 +812,16 @@
                             <div>
                                 <span class="code-prompt">$</span><span class="code-text" id="cmd-alma-gpg">sudo rpm --import https://repo.wheelhouser.com/steve-rock-wheelhouser-gpg.key</span>
                             </div>
-                            <button class="copy-btn" onclick="copyCode('cmd-alma-gpg', this)" id="btn-copy-alma-gpg">Copy</button>
+                            <button class="copy-btn" onclick="copyCode('cmd-alma-gpg', this)" id="btn-copy-alma-gpg" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -696,9 +835,18 @@
                         </div>
                         <div class="code-box">
                             <div>
-                                <span class="code-prompt">$</span><span class="code-text" id="cmd-fedora-rpm">sudo dnf install https://repo.wheelhouser.com/fedora/44/x86_64/steve-rock-wheelhouser-release-1.0-5.fc44.noarch.rpm</span>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-fedora-rpm">sudo dnf install https://repo.wheelhouser.com/fedora/44/x86_64/steve-rock-wheelhouser-release-1.0-6.fc44.noarch.rpm</span>
                             </div>
-                            <button class="copy-btn" onclick="copyCode('cmd-fedora-rpm', this)" id="btn-copy-fedora-rpm">Copy</button>
+                            <button class="copy-btn" onclick="copyCode('cmd-fedora-rpm', this)" id="btn-copy-fedora-rpm" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
 
@@ -711,7 +859,16 @@
                             <div>
                                 <span class="code-prompt">$</span><span class="code-text" id="cmd-fedora-manual">sudo curl -sL https://repo.wheelhouser.com/fedora.repo -o /etc/yum.repos.d/wheelhouser.repo</span>
                             </div>
-                            <button class="copy-btn" onclick="copyCode('cmd-fedora-manual', this)" id="btn-copy-fedora-manual">Copy</button>
+                            <button class="copy-btn" onclick="copyCode('cmd-fedora-manual', this)" id="btn-copy-fedora-manual" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
 
@@ -724,7 +881,16 @@
                             <div>
                                 <span class="code-prompt">$</span><span class="code-text" id="cmd-fedora-gpg">sudo rpm --import https://repo.wheelhouser.com/steve-rock-wheelhouser-gpg.key</span>
                             </div>
-                            <button class="copy-btn" onclick="copyCode('cmd-fedora-gpg', this)" id="btn-copy-fedora-gpg">Copy</button>
+                            <button class="copy-btn" onclick="copyCode('cmd-fedora-gpg', this)" id="btn-copy-fedora-gpg" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -742,52 +908,120 @@
                 <!-- Package 1: Antigravity IDE -->
                 <div class="pkg-card">
                     <div class="pkg-top">
-                        <div class="pkg-title">antigravity-ide</div>
+                        <div class="pkg-header-main">
+                            <div class="pkg-icon-wrap">
+                                <img src="assets/icons/antigravity-ide.png" alt="Antigravity IDE icon" class="pkg-icon">
+                            </div>
+                            <div class="pkg-title-group">
+                                <div class="pkg-title">antigravity-ide</div>
+                                <span class="pkg-vendor">Wheelhouser LLC</span>
+                            </div>
+                        </div>
                         <span class="pkg-arch">noarch</span>
                     </div>
                     <p class="pkg-desc">Official RPM packaging and desktop launcher utility for Google Antigravity IDE on Rocky Linux 10, AlmaLinux 10, and Fedora 44.</p>
                     <div class="pkg-install">
                         <code>sudo dnf install antigravity-ide</code>
-                        <button class="copy-btn" onclick="copySnippet('sudo dnf install antigravity-ide', this)">Copy</button>
+                        <button class="copy-btn" onclick="copySnippet('sudo dnf install antigravity-ide', this)" title="Copy command" aria-label="Copy to clipboard">
+                            <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span class="copy-label">Copy</span>
+                        </button>
                     </div>
                 </div>
 
                 <!-- Package 2: Rocky Linux Setup -->
                 <div class="pkg-card">
                     <div class="pkg-top">
-                        <div class="pkg-title">rocky-linux-setup</div>
+                        <div class="pkg-header-main">
+                            <div class="pkg-icon-wrap">
+                                <img src="assets/icons/rocky-linux-setup.svg" alt="Rocky Linux Setup icon" class="pkg-icon">
+                            </div>
+                            <div class="pkg-title-group">
+                                <div class="pkg-title">rocky-linux-setup</div>
+                                <span class="pkg-vendor">Wheelhouser LLC</span>
+                            </div>
+                        </div>
                         <span class="pkg-arch">el10</span>
                     </div>
                     <p class="pkg-desc">Post-install workstation optimization, automatic repository coordinator (CRB, EPEL), developer toolchains, and management CLI.</p>
                     <div class="pkg-install">
                         <code>sudo dnf install rocky-linux-setup</code>
-                        <button class="copy-btn" onclick="copySnippet('sudo dnf install rocky-linux-setup', this)">Copy</button>
+                        <button class="copy-btn" onclick="copySnippet('sudo dnf install rocky-linux-setup', this)" title="Copy command" aria-label="Copy to clipboard">
+                            <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span class="copy-label">Copy</span>
+                        </button>
                     </div>
                 </div>
 
                 <!-- Package 3: Web Browser -->
                 <div class="pkg-card">
                     <div class="pkg-top">
-                        <div class="pkg-title">web-browser</div>
+                        <div class="pkg-header-main">
+                            <div class="pkg-icon-wrap">
+                                <img src="assets/icons/web-browser.png" alt="Web Browser icon" class="pkg-icon">
+                            </div>
+                            <div class="pkg-title-group">
+                                <div class="pkg-title">web-browser</div>
+                                <span class="pkg-vendor">Wheelhouser LLC</span>
+                            </div>
+                        </div>
                         <span class="pkg-arch">el10 / fc44</span>
                     </div>
                     <p class="pkg-desc">Fast, lightweight, privacy-focused desktop web browser with native dark mode and PySide6/QtWebEngine desktop integration.</p>
                     <div class="pkg-install">
                         <code>sudo dnf install web-browser</code>
-                        <button class="copy-btn" onclick="copySnippet('sudo dnf install web-browser', this)">Copy</button>
+                        <button class="copy-btn" onclick="copySnippet('sudo dnf install web-browser', this)" title="Copy command" aria-label="Copy to clipboard">
+                            <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span class="copy-label">Copy</span>
+                        </button>
                     </div>
                 </div>
 
                 <!-- Package 4: Text Editor -->
                 <div class="pkg-card">
                     <div class="pkg-top">
-                        <div class="pkg-title">text-editor</div>
+                        <div class="pkg-header-main">
+                            <div class="pkg-icon-wrap">
+                                <img src="assets/icons/text-editor.png" alt="Text Editor icon" class="pkg-icon">
+                            </div>
+                            <div class="pkg-title-group">
+                                <div class="pkg-title">text-editor</div>
+                                <span class="pkg-vendor">Wheelhouser LLC</span>
+                            </div>
+                        </div>
                         <span class="pkg-arch">el10 / fc44</span>
                     </div>
                     <p class="pkg-desc">Professional desktop text editor with code folding, multi-cursor editing, syntax highlighting, and customizable themes.</p>
                     <div class="pkg-install">
                         <code>sudo dnf install text-editor</code>
-                        <button class="copy-btn" onclick="copySnippet('sudo dnf install text-editor', this)">Copy</button>
+                        <button class="copy-btn" onclick="copySnippet('sudo dnf install text-editor', this)" title="Copy command" aria-label="Copy to clipboard">
+                            <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span class="copy-label">Copy</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -848,26 +1082,55 @@
         }
 
         function copyCode(elementId, btn) {
-            const text = document.getElementById(elementId).innerText;
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const text = (el.innerText || el.textContent || '').trim();
             copyTextToClipboard(text, btn);
         }
 
         function copySnippet(text, btn) {
-            copyTextToClipboard(text, btn);
+            copyTextToClipboard(text.trim(), btn);
         }
 
         function copyTextToClipboard(text, btn) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = btn.innerText;
-                btn.innerText = "Copied!";
-                btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    triggerCopiedFeedback(btn);
+                }).catch(() => {
+                    fallbackCopy(text, btn);
+                });
+            } else {
+                fallbackCopy(text, btn);
+            }
+        }
+
+        function fallbackCopy(text, btn) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                triggerCopiedFeedback(btn);
+            } catch (err) {
                 console.error("Failed to copy:", err);
-            });
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function triggerCopiedFeedback(btn) {
+            const label = btn.querySelector('.copy-label');
+            const originalText = label ? label.textContent : btn.textContent;
+            if (label) label.textContent = "Copied!";
+            btn.classList.add('copied');
+            setTimeout(() => {
+                if (label) label.textContent = originalText;
+                btn.classList.remove('copied');
+            }, 2000);
         }
     </script>
 </body>
