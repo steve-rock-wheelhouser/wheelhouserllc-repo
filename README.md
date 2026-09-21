@@ -1,6 +1,6 @@
 # Wheelhouser LLC Custom Linux RPM Repository
 
-This is the unified multi-distribution RPM repository for Wheelhouser LLC's Linux applications and utilities, supporting both **Enterprise Linux (Rocky Linux)** and **Fedora** across multiple architectures (`x86_64`, `aarch64`).
+This is the unified multi-distribution RPM repository for Wheelhouser LLC's Linux applications and utilities, supporting **Enterprise Linux (Rocky Linux 10, AlmaLinux 10)** and **Fedora 44** across multiple architectures (`x86_64`, `aarch64`).
 
 ---
 
@@ -10,25 +10,20 @@ Packages are organized in a clean hierarchical layout adhering to [AGENTS.md Sec
 ```text
 wheelhouserllc-repo/
 ├── rocky/
-│   ├── 10/
-│   │   ├── x86_64/
-│   │   │   ├── *.rpm
-│   │   │   └── repodata/
-│   │   └── aarch64/
-│   │       ├── *.rpm
-│   │       └── repodata/
-│   └── ...
+│   └── 10/
+│       ├── x86_64/
+│       └── aarch64/
+├── almalinux/
+│   └── 10/
+│       ├── x86_64/
+│       └── aarch64/
 ├── fedora/
-│   ├── 44/
-│   │   ├── x86_64/
-│   │   │   ├── *.rpm
-│   │   │   └── repodata/
-│   │   └── aarch64/
-│   │       ├── *.rpm
-│   │       └── repodata/
-│   └── ...
+│   └── 44/
+│       ├── x86_64/
+│       └── aarch64/
 ├── steve-rock-wheelhouser-gpg.key
 ├── rocky.repo
+├── almalinux.repo
 ├── fedora.repo
 ├── index.html
 ├── CNAME
@@ -46,7 +41,7 @@ wheelhouserllc-repo/
 
 #### Option A: Install via Release Bootstrap RPM (Recommended)
 ```bash
-sudo dnf install https://repo.wheelhouser.com/rocky/10/x86_64/steve-rock-wheelhouser-release-1.0-5.el10.noarch.rpm
+sudo dnf install https://repo.wheelhouser.com/rocky/10/x86_64/steve-rock-wheelhouser-release-1.0-6.el10.noarch.rpm
 ```
 
 #### Option B: Manual Setup
@@ -56,11 +51,25 @@ sudo curl -sL https://repo.wheelhouser.com/rocky.repo -o /etc/yum.repos.d/wheelh
 
 ---
 
+### AlmaLinux 10
+
+#### Option A: Install via Release Bootstrap RPM (Recommended)
+```bash
+sudo dnf install https://repo.wheelhouser.com/almalinux/10/x86_64/steve-rock-wheelhouser-release-1.0-6.el10.noarch.rpm
+```
+
+#### Option B: Manual Setup
+```bash
+sudo curl -sL https://repo.wheelhouser.com/almalinux.repo -o /etc/yum.repos.d/wheelhouser.repo
+```
+
+---
+
 ### Fedora
 
 #### Option A: Install via Release Bootstrap RPM (Recommended)
 ```bash
-sudo dnf install https://repo.wheelhouser.com/fedora/44/x86_64/steve-rock-wheelhouser-release-1.0-5.fc44.noarch.rpm
+sudo dnf install https://repo.wheelhouser.com/fedora/44/x86_64/steve-rock-wheelhouser-release-1.0-6.fc44.noarch.rpm
 ```
 
 #### Option B: Manual Setup
@@ -74,7 +83,7 @@ sudo curl -sL https://repo.wheelhouser.com/fedora.repo -o /etc/yum.repos.d/wheel
 
 Once the repository is configured:
 
-* **`antigravity-ide`**: Open-source packaging and launcher utility for Google Antigravity IDE (Rocky Linux 10, Fedora 44).
+* **`antigravity-ide`**: Open-source packaging and launcher utility for Google Antigravity IDE (Rocky Linux 10, AlmaLinux 10, Fedora 44).
   ```bash
   sudo dnf install antigravity-ide
   ```

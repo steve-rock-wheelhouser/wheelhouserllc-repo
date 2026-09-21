@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wheelhouser RPM Repository | Enterprise Linux & Fedora</title>
-    <meta name="description" content="Official RPM package repository for Wheelhouser LLC applications and utilities, supporting Rocky Linux 10 and Fedora 44.">
+    <meta name="description" content="Official RPM package repository for Wheelhouser LLC applications and utilities, supporting Rocky Linux 10, AlmaLinux 10, and Fedora 44.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -582,7 +582,7 @@
                 Official Production RPM Repository
             </div>
             <h1>Wheelhouser Linux Package Repository</h1>
-            <p>Unified enterprise repository for Rocky Linux 10 and Fedora 44. Native, signed RPM packages engineered for modern workstations and cloud instances.</p>
+            <p>Unified enterprise repository for Rocky Linux 10, AlmaLinux 10, and Fedora 44. Native, signed RPM packages engineered for modern workstations and cloud instances.</p>
         </section>
 
         <!-- Distribution Setup Tabs -->
@@ -592,6 +592,10 @@
                     <button class="tab-btn active" id="tab-rocky" onclick="switchTab('rocky')" role="tab" aria-selected="true">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                         Rocky Linux 10 / Enterprise Linux
+                    </button>
+                    <button class="tab-btn" id="tab-almalinux" onclick="switchTab('almalinux')" role="tab" aria-selected="false">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        AlmaLinux 10
                     </button>
                     <button class="tab-btn" id="tab-fedora" onclick="switchTab('fedora')" role="tab" aria-selected="false">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
@@ -637,6 +641,48 @@
                                 <span class="code-prompt">$</span><span class="code-text" id="cmd-rocky-gpg">sudo rpm --import https://repo.wheelhouser.com/steve-rock-wheelhouser-gpg.key</span>
                             </div>
                             <button class="copy-btn" onclick="copyCode('cmd-rocky-gpg', this)" id="btn-copy-rocky-gpg">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AlmaLinux Tab Content -->
+                <div id="content-almalinux" class="tab-content" role="tabpanel">
+                    <div class="method-block">
+                        <div class="method-header">
+                            <span class="method-title">Option 1: Quick Install via Release RPM</span>
+                            <span class="method-tag tag-recommended">Recommended</span>
+                        </div>
+                        <div class="code-box">
+                            <div>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-alma-rpm">sudo dnf install https://repo.wheelhouser.com/almalinux/10/x86_64/steve-rock-wheelhouser-release-1.0-6.el10.noarch.rpm</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyCode('cmd-alma-rpm', this)" id="btn-copy-alma-rpm">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="method-block">
+                        <div class="method-header">
+                            <span class="method-title">Option 2: Direct .repo Configuration Setup</span>
+                            <span class="method-tag tag-manual">Manual Setup</span>
+                        </div>
+                        <div class="code-box">
+                            <div>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-alma-manual">sudo curl -sL https://repo.wheelhouser.com/almalinux.repo -o /etc/yum.repos.d/wheelhouser.repo</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyCode('cmd-alma-manual', this)" id="btn-copy-alma-manual">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="method-block">
+                        <div class="method-header">
+                            <span class="method-title">Option 3: Import Public GPG Signing Key</span>
+                            <span class="method-tag tag-manual">GPG Signature</span>
+                        </div>
+                        <div class="code-box">
+                            <div>
+                                <span class="code-prompt">$</span><span class="code-text" id="cmd-alma-gpg">sudo rpm --import https://repo.wheelhouser.com/steve-rock-wheelhouser-gpg.key</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyCode('cmd-alma-gpg', this)" id="btn-copy-alma-gpg">Copy</button>
                         </div>
                     </div>
                 </div>
@@ -699,7 +745,7 @@
                         <div class="pkg-title">antigravity-ide</div>
                         <span class="pkg-arch">noarch</span>
                     </div>
-                    <p class="pkg-desc">Official RPM packaging and desktop launcher utility for Google Antigravity IDE on Rocky Linux 10 and Fedora 44.</p>
+                    <p class="pkg-desc">Official RPM packaging and desktop launcher utility for Google Antigravity IDE on Rocky Linux 10, AlmaLinux 10, and Fedora 44.</p>
                     <div class="pkg-install">
                         <code>sudo dnf install antigravity-ide</code>
                         <button class="copy-btn" onclick="copySnippet('sudo dnf install antigravity-ide', this)">Copy</button>
@@ -754,6 +800,7 @@
                 <p>Direct download access to configuration templates and raw GPG signing keys:</p>
                 <ul class="info-links">
                     <li><a href="/rocky.repo" download>📄 rocky.repo (DNF Config)</a></li>
+                    <li><a href="/almalinux.repo" download>📄 almalinux.repo (DNF Config)</a></li>
                     <li><a href="/fedora.repo" download>📄 fedora.repo (DNF Config)</a></li>
                     <li><a href="/steve-rock-wheelhouser-gpg.key" download>🔑 steve-rock-wheelhouser-gpg.key (GPG Public Key)</a></li>
                 </ul>
