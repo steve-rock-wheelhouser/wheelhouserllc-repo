@@ -1,0 +1,17 @@
+Origin: Wheelhouser LLC
+Label: Wheelhouser
+Suite: stable
+Codename: 24
+Architectures: all amd64
+Components: main
+Description: Wheelhouser LLC Ubuntu 24 Package Repository
+Date: Wed, 23 Sep 2026 22:22:16 GMT
+MD5Sum:
+ b9e607fa5e3df80012268eed657bcb09 217 Packages
+ 80c6840235e9beefa3b92638aa0e1d0b 200 Packages.gz
+SHA1:
+ 12eb3d786b75f817b522c4730795f268cb69cf63 217 Packages
+ 86c7adc5bb0546aa4bd05d81baf14afbd7f11ed6 200 Packages.gz
+SHA256:
+ a93c7251dcbcd1ed399f2f346bc2389464344522fe143c8f826c0f132595e8f1 217 Packages
+ cd3a79fe198b31401105ffd5fd531a1fa2b3d0c73a538748378993d4d87cf605 200 Packages.gz

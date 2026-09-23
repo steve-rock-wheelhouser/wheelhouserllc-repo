@@ -1,0 +1,36 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Origin: Wheelhouser LLC
+Label: Wheelhouser
+Suite: stable
+Codename: 24
+Architectures: all amd64
+Components: main
+Description: Wheelhouser LLC Ubuntu 24 Package Repository
+Date: Wed, 23 Sep 2026 22:22:16 GMT
+MD5Sum:
+ b9e607fa5e3df80012268eed657bcb09 217 Packages
+ 80c6840235e9beefa3b92638aa0e1d0b 200 Packages.gz
+SHA1:
+ 12eb3d786b75f817b522c4730795f268cb69cf63 217 Packages
+ 86c7adc5bb0546aa4bd05d81baf14afbd7f11ed6 200 Packages.gz
+SHA256:
+ a93c7251dcbcd1ed399f2f346bc2389464344522fe143c8f826c0f132595e8f1 217 Packages
+ cd3a79fe198b31401105ffd5fd531a1fa2b3d0c73a538748378993d4d87cf605 200 Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE4IWrRwbYQcxF4BPEtgbWvjyOkGsFAmq0URgACgkQtgbWvjyO
+kGs59BAAoicHOPt2s9fREtH14TuB6FXnqeO4Gzmji/cyqIW+WgGStSAha9JUplrA
+cFj4Bkq+T55bT5sGw3rO9a/9Wban32uFR4dDMS0dpC53oFf0UKJJMPc+HJWu3090
+91UT0NA7jzCVzwDi1Nwi+2Rg6E/ZjLrlK/MeKkfHaYC1TJbYRH1V24gTXtF7P2Jb
+osDYC8dEOCaJLY+56DzCTreNVGX/2XoD995T2ZRhGu6L36xzLq/f0aPyzgQtgKrc
+LOTR0F6b4c1xeNPWCay6K0UrrT8KjzM0iWmdtBxeGsOArmshdQsxxjYvBKXngUci
+M6OhYZuyVNxIsTSD7OLrxmrSftJ5T/WEXgHPeU8jvc/2XVUTCwV3WlE5YGASMZFK
+eq6XldFtfs08g+3FFEOdUb9KFLlpkQz4UKXRFfk5YNXZOVMC7QxBpNzfm3r39Neo
+NX0TWcnk6oiO/bkuI8gh9UkGsb3UepCgM1BF02K3iCVHNTPux7NjJaTBcb8MP7Jy
+soxnU5gfFoHFZM7XUB/wqnvvMM/PpkJOkXjUpm18Lz9e0fBpwU72Dyq0DBGqulL9
+3t/hXg8zQSZPugHV/plop62QLLLzOEAN6TJ9tXY4PfIxbJ+XZzJ4zPm0BamCSPbx
+b/H6wY/M+hUWqBkiFdD1EI+70PzrKvVJyDJXSkoanpl1locjpkI=
+=jAJB
+-----END PGP SIGNATURE-----

@@ -1,0 +1,21 @@
+Package: antigravity-ide
+Version: 1.0.0-22
+Section: devel
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: curl, tar, xdg-utils, desktop-file-utils, libnotify4, libxss1, libxkbfile1, libgbm1, libnss3, gnome-keyring, libsecret-1-0, libasound2t64 | libasound2
+Provides: antigravity (= 1.0.0-22)
+Replaces: antigravity (<= 1.0.0-12)
+Conflicts: antigravity (<= 1.0.0-12)
+Homepage: https://github.com/steve-rock-wheelhouser/antigravity-ide
+Description: Antigravity IDE launcher utility
+ Open-source launcher and desktop integration utility for Antigravity IDE on
+ Debian and Ubuntu. Automatically downloads and installs the official Google
+ Antigravity IDE binary payload on installation.
+Filename: antigravity-ide_1.0.0-22_all.deb
+Size: 149320
+MD5sum: 57196e95212b40ad2065940d41c00fc7
+SHA1: 635c5fd52e5fc456f9775b0e0f5fe78a83024d7c
+SHA256: 15263a50c0e89ed3525cd43fc246da552dc4608c069ba8190b00b1459dffa799
