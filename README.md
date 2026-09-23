@@ -79,6 +79,28 @@ sudo curl -sL https://repo.wheelhouser.com/fedora.repo -o /etc/yum.repos.d/wheel
 
 ---
 
+### Debian 13 (Trixie) & Ubuntu 24
+
+#### APT Repository Setup
+```bash
+# 1. Install keyring directory and download official Wheelhouser GPG key
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://repo.wheelhouser.com/steve-rock-wheelhouser-gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/wheelhouser.gpg
+sudo chmod a+r /etc/apt/keyrings/wheelhouser.gpg
+
+# 2. Add repository source (Debian 13)
+echo "deb [signed-by=/etc/apt/keyrings/wheelhouser.gpg] https://repo.wheelhouser.com/debian/13 ./" | sudo tee /etc/apt/sources.list.d/wheelhouser.list
+
+# For Ubuntu 24, use:
+# echo "deb [signed-by=/etc/apt/keyrings/wheelhouser.gpg] https://repo.wheelhouser.com/ubuntu/24 ./" | sudo tee /etc/apt/sources.list.d/wheelhouser.list
+
+# 3. Update index and install packages
+sudo apt update
+sudo apt install antigravity-ide
+```
+
+---
+
 ## 2. Available Packages
 
 Once the repository is configured:
