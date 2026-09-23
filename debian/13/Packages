@@ -15,7 +15,7 @@ Description: Antigravity IDE launcher utility
  Debian and Ubuntu. Automatically downloads and installs the official Google
  Antigravity IDE binary payload on installation.
 Filename: antigravity-ide_1.0.0-22_all.deb
-Size: 149372
-MD5sum: 70f99fe71ad65851b3cc203c41d97388
-SHA1: 39ad9f308dcf6dbbdfbc9b9c7b8c250c31ea16f2
-SHA256: b7492341399c66376399cc9e7935eb65543448295514153f66f071dcacb2f350
+Size: 149332
+MD5sum: b6366f564e20282cf819d74a18adfcef
+SHA1: c37a96eb42eded47d74bdc59a54aa88676550821
+SHA256: fbdab838bfb8302f5b4d936a76106c2335311d8c13b7f06239bf6ef6037b3ed6
