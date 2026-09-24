@@ -17,10 +17,10 @@ Description: Advanced AI-Powered Agentic Coding & Development Suite
  AI agentic architecture, Antigravity IDE empowers developers to create, debug,
  refactor, and test complex software systems with speed and confidence.
 Filename: antigravity-ide_1.0.0-30_all.deb
-Size: 236948
-MD5sum: 62e3bc936b3ce76c5e5cc1878cb45fe4
-SHA1: b3f4c25871fc62e58c42dd115cfc5704e0986377
-SHA256: 44b3612e40a528ad5015c2bd8d2ad86c909ad209d2370d445e69f55140cffea5
+Size: 236964
+MD5sum: 06b483a14c9a9a3e16a16746948929c4
+SHA1: 4adb296cce2e672015db1d418d019444bda8bda5
+SHA256: 393066d5f1a6ea4be3a5635dd4f515a4fad94bcefbbe7e26f740d1359599ca57
 
 Package: antigravity-ide
 Version: 1.0.0-29
