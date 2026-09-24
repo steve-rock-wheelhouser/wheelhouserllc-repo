@@ -5,13 +5,13 @@ Codename: 24
 Architectures: all amd64
 Components: main
 Description: Wheelhouser LLC Ubuntu 24 Package Repository
-Date: Thu, 24 Sep 2026 22:12:09 GMT
+Date: Thu, 24 Sep 2026 22:15:31 GMT
 MD5Sum:
  2024f23d3a03d6c888cb60ea5d08973e 435 Packages
- 679c5b984f64f3a11c5633f84ce7041b 294 Packages.gz
+ d814c136576a6cf7042adb5cb3ec4a45 294 Packages.gz
 SHA1:
  dc6835df33770c7468ccaee83c412bb25b91db3a 435 Packages
- 71df09e2ad0aa5aefd4ccf3a08aa68e6757e04df 294 Packages.gz
+ 6a2218fbeccf659004a8f216be73f53f8dc24988 294 Packages.gz
 SHA256:
  1464fd94deb1cc362bd51b63a2047ac3b5f9ab733ef3b5ddbdc033b425dd2497 435 Packages
- 0045089471df7385dfe7eec0c5fb59dae9754806bac4f09f37c2b3c3af781064 294 Packages.gz
+ c706c8c82e2a2098943b39812b83db91613ce4fdd61be6d20a730e273728dfe9 294 Packages.gz
