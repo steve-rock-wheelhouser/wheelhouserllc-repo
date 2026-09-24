@@ -1,4 +1,27 @@
 Package: antigravity-ide
+Version: 1.0.0-26
+Section: devel
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: curl, tar, xdg-utils, desktop-file-utils, libnotify4, libxss1, libxkbfile1, libgbm1, libnss3, gnome-keyring, libsecret-1-0, libasound2t64 | libasound2
+Provides: antigravity (= 1.0.0-26)
+Replaces: antigravity (<= 1.0.0-12)
+Conflicts: antigravity (<= 1.0.0-12)
+Homepage: https://wheelhouser.com/products/antigravity-ide.html
+Description: Advanced AI-Powered Agentic Coding & Development Suite
+ Antigravity IDE is a next-generation integrated development environment and
+ intelligent coding companion designed by Wheelhouser LLC. Powered by autonomous
+ AI agentic architecture, Antigravity IDE empowers developers to create, debug,
+ refactor, and test complex software systems with speed and confidence.
+Filename: antigravity-ide_1.0.0-26_all.deb
+Size: 236344
+MD5sum: 21465a561b3b0c469df8d5f0265f47f2
+SHA1: 95cfe2bf972d55d87ed45741ade3f24ba71e3f77
+SHA256: 99342edfe3fb500c816fc585fc4a559ba7a664608523108f6df557197b8e3227
+
+Package: antigravity-ide
 Version: 1.0.0-23
 Section: devel
 Priority: optional
@@ -19,25 +42,3 @@ Size: 150396
 MD5sum: 1ccec792ede0c489be97ab235a2e3924
 SHA1: c970b5efebe68bd6a09b609540a3425f2151d2a2
 SHA256: 1c6765881e1bb32e60ce7bcb3334fdd5300efe80c3ea533ad9843084841653dd
-
-Package: antigravity-ide
-Version: 1.0.0-22
-Section: devel
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Depends: curl, tar, xdg-utils, desktop-file-utils, libnotify4, libxss1, libxkbfile1, libgbm1, libnss3, gnome-keyring, libsecret-1-0, libasound2t64 | libasound2
-Provides: antigravity (= 1.0.0-22)
-Replaces: antigravity (<= 1.0.0-12)
-Conflicts: antigravity (<= 1.0.0-12)
-Homepage: https://github.com/steve-rock-wheelhouser/antigravity-ide
-Description: Antigravity IDE launcher utility
- Open-source launcher and desktop integration utility for Antigravity IDE on
- Debian and Ubuntu. Automatically downloads and installs the official Google
- Antigravity IDE binary payload on installation.
-Filename: antigravity-ide_1.0.0-22_all.deb
-Size: 149332
-MD5sum: b6366f564e20282cf819d74a18adfcef
-SHA1: c37a96eb42eded47d74bdc59a54aa88676550821
-SHA256: fbdab838bfb8302f5b4d936a76106c2335311d8c13b7f06239bf6ef6037b3ed6
