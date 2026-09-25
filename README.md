@@ -1,6 +1,6 @@
 # Wheelhouser LLC Linux Package Repository (RPM & APT)
 
-This is the unified multi-distribution package repository for Wheelhouser LLC's Linux applications and utilities, supporting both **RPM (DNF)** for **Enterprise Linux (Rocky Linux 10, AlmaLinux 10)** and **Fedora 44**, and **DEB (APT)** for **Debian 13 (Trixie)** and **Ubuntu 24** across architectures (`x86_64`, `aarch64`, `all`).
+This is the unified multi-distribution package repository for Wheelhouser LLC's Linux applications and utilities, supporting both **RPM (DNF)** for **Enterprise Linux (Rocky Linux 10, AlmaLinux 10)** and **Fedora 44**, and **DEB (APT)** for **Debian 13 (Trixie)** and **Ubuntu 26.04 LTS** across architectures (`x86_64`, `aarch64`, `all`).
 
 ---
 
@@ -27,6 +27,10 @@ wheelhouserllc-repo/
 │       ├── Packages (.gz)
 │       └── Release (.gpg, InRelease)
 ├── ubuntu/
+│   ├── 26.04/
+│   │   ├── *.deb
+│   │   ├── Packages (.gz)
+│   │   └── Release (.gpg, InRelease)
 │   └── 24/
 │       ├── *.deb
 │       ├── Packages (.gz)
@@ -93,7 +97,7 @@ sudo curl -sL https://repo.wheelhouser.com/fedora.repo -o /etc/yum.repos.d/wheel
 
 ---
 
-### Debian 13 (Trixie) & Ubuntu 24
+### Debian 13 (Trixie) & Ubuntu 26.04 LTS
 
 #### APT Repository Setup
 ```bash
@@ -106,8 +110,8 @@ sudo chmod a+r /etc/apt/keyrings/wheelhouser.gpg
 # For Debian 13:
 echo "deb [signed-by=/etc/apt/keyrings/wheelhouser.gpg] https://repo.wheelhouser.com/debian/13 ./" | sudo tee /etc/apt/sources.list.d/wheelhouser.list
 
-# For Ubuntu 24:
-echo "deb [signed-by=/etc/apt/keyrings/wheelhouser.gpg] https://repo.wheelhouser.com/ubuntu/24 ./" | sudo tee /etc/apt/sources.list.d/wheelhouser.list
+# For Ubuntu 26.04 LTS:
+echo "deb [signed-by=/etc/apt/keyrings/wheelhouser.gpg] https://repo.wheelhouser.com/ubuntu/26.04 ./" | sudo tee /etc/apt/sources.list.d/wheelhouser.list
 
 # 3. Update index and install packages
 sudo apt update
@@ -120,7 +124,7 @@ sudo apt install antigravity-ide
 
 Once the repository is configured on your system:
 
-* **`antigravity-ide`** (`v1.0.0-38`): Open-source packaging and launcher utility for Google Antigravity IDE (Rocky Linux 10, AlmaLinux 10, Fedora 44, Debian 13, Ubuntu 24).
+* **`antigravity-ide`** (`v1.0.0-38`): Open-source packaging and launcher utility for Google Antigravity IDE (Rocky Linux 10, AlmaLinux 10, Fedora 44, Debian 13, Ubuntu 26.04 LTS).
   * **DNF (RPM):** `sudo dnf install antigravity-ide`
   * **APT (DEB):** `sudo apt install antigravity-ide`
 
