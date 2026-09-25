@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wheelhouser RPM Repository | Enterprise Linux & Fedora</title>
-    <meta name="description" content="Official RPM package repository for Wheelhouser LLC applications and utilities, supporting Rocky Linux 10, AlmaLinux 10, and Fedora 44.">
+    <title>Wheelhouser Linux Repository | RPM (DNF) & APT (Debian / Ubuntu)</title>
+    <meta name="description" content="Official unified Linux package repository for Wheelhouser LLC applications and utilities, providing verified, signed RPM (DNF) and DEB (APT) packages for Rocky Linux 10, AlmaLinux 10, Fedora 44, Debian 13, and Ubuntu 24.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -450,18 +450,77 @@
 
         .section-header {
             margin-bottom: 2rem;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            padding-bottom: 1.25rem;
         }
 
-        .section-header h2 {
+        .section-title-wrap h2 {
             font-size: 1.85rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
         }
 
-        .section-header p {
+        .section-title-wrap p {
             color: var(--text-muted);
+        }
+
+        .pkg-mgr-selector {
+            display: inline-flex;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-md);
+            padding: 4px;
+            gap: 4px;
+        }
+
+        .pkg-mgr-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1rem;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: var(--radius-sm);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--font-sans);
+        }
+
+        .pkg-mgr-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .pkg-mgr-btn.active {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .pkg-mgr-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .dnf-dot {
+            background: #38bdf8;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+        }
+
+        .apt-dot {
+            background: #f87171;
+            box-shadow: 0 0 8px rgba(248, 113, 113, 0.8);
         }
 
         .grid-packages {
@@ -490,7 +549,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.85rem;
             gap: 0.75rem;
         }
 
@@ -498,21 +557,6 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-        }
-
-        .pkg-icon-wrap {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .pkg-icon-wrap {
@@ -597,9 +641,28 @@
             margin-top: 0.15rem;
         }
 
-        .pkg-arch {
+        .pkg-badges {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.35rem;
+        }
+
+        .pkg-version-badge {
             font-size: 0.75rem;
-            padding: 0.25rem 0.55rem;
+            padding: 0.2rem 0.55rem;
+            background: rgba(129, 140, 248, 0.15);
+            color: #a5b4fc;
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-family: var(--font-mono);
+            white-space: nowrap;
+        }
+
+        .pkg-arch {
+            font-size: 0.72rem;
+            padding: 0.18rem 0.5rem;
             background: rgba(56, 189, 248, 0.1);
             color: var(--primary);
             border: 1px solid rgba(56, 189, 248, 0.2);
@@ -608,12 +671,107 @@
             white-space: nowrap;
         }
 
+        .pkg-tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.35rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .format-pill {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .pill-rpm {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .pill-deb {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .pill-deb-planned {
+            background: rgba(148, 163, 184, 0.12);
+            color: #94a3b8;
+            border: 1px dashed rgba(148, 163, 184, 0.3);
+        }
+
+        .distro-pill {
+            font-size: 0.68rem;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 500;
+        }
+
         .pkg-desc {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.93rem;
             flex-grow: 1;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            line-height: 1.55;
+        }
+
+        .pkg-cmd-container {
+            margin-top: auto;
+        }
+
+        .pkg-cmd-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.4rem;
+        }
+
+        .cmd-label {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .card-cmd-tabs {
+            display: inline-flex;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-sm);
+            padding: 2px;
+            gap: 2px;
+        }
+
+        .cmd-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .cmd-tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .cmd-tab-btn.active {
+            background: var(--primary);
+            color: #0b1120;
+            font-weight: 700;
         }
 
         .pkg-install {
@@ -626,6 +784,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            overflow-x: auto;
+        }
+
+        .pkg-status-notice {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px dashed var(--card-border);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
         }
 
         .pkg-footer {
@@ -796,10 +968,10 @@
         <section class="hero">
             <div class="hero-badge">
                 <span class="hero-badge-pulse"></span>
-                Official Production RPM Repository
+                Official Production RPM &amp; APT Repository
             </div>
             <h1>Wheelhouser Linux Package Repository</h1>
-            <p>Unified enterprise package repository for Rocky Linux 10, AlmaLinux 10, Fedora 44, Debian 13, and Ubuntu 24. Native, signed RPM and DEB packages engineered for modern workstations and cloud instances.</p>
+            <p>Unified enterprise package repository for Rocky Linux 10, AlmaLinux 10, Fedora 44, Debian 13, and Ubuntu 24. Native, signed RPM (DNF) and DEB (APT) packages engineered for modern workstations and cloud instances.</p>
         </section>
 
         <!-- Distribution Setup Tabs -->
@@ -1178,13 +1350,25 @@
         <!-- Available Packages -->
         <section class="packages-section">
             <div class="section-header">
-                <h2>Featured Packages</h2>
-                <p>Install immediately once the repository is configured on your system.</p>
+                <div class="section-title-wrap">
+                    <h2>Featured Packages</h2>
+                    <p>Production packages available for immediate deployment across supported distributions.</p>
+                </div>
+                <div class="pkg-mgr-selector" role="group" aria-label="Package Manager Filter">
+                    <button class="pkg-mgr-btn active" id="btn-pm-dnf" onclick="setGlobalPkgManager('dnf')">
+                        <span class="pkg-mgr-dot dnf-dot"></span>
+                        DNF (RPM &bull; Rocky, Alma, Fedora)
+                    </button>
+                    <button class="pkg-mgr-btn" id="btn-pm-apt" onclick="setGlobalPkgManager('apt')">
+                        <span class="pkg-mgr-dot apt-dot"></span>
+                        APT (DEB &bull; Debian, Ubuntu)
+                    </button>
+                </div>
             </div>
 
             <div class="grid-packages">
                 <!-- Package 1: Antigravity IDE -->
-                <div class="pkg-card">
+                <div class="pkg-card" data-pkg="antigravity-ide">
                     <div class="pkg-top">
                         <div class="pkg-header-main">
                             <a href="https://wheelhouser.com/products/antigravity-ide.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Google Antigravity IDE Product Details">
@@ -1198,21 +1382,55 @@
                                 <span class="pkg-vendor">Wheelhouser LLC</span>
                             </div>
                         </div>
-                        <span class="pkg-arch">noarch</span>
+                        <div class="pkg-badges">
+                            <span class="pkg-version-badge">v1.0.0-38</span>
+                            <span class="pkg-arch">noarch &bull; all</span>
+                        </div>
                     </div>
-                    <p class="pkg-desc">Official RPM packaging and desktop launcher utility for Google Antigravity IDE on Rocky Linux 10, AlmaLinux 10, and Fedora 44.</p>
-                    <div class="pkg-install">
-                        <code>sudo dnf install antigravity-ide</code>
-                        <button class="copy-btn" onclick="copySnippet('sudo dnf install antigravity-ide', this)" title="Copy command" aria-label="Copy to clipboard">
-                            <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            <span class="copy-label">Copy</span>
-                        </button>
+                    <div class="pkg-tags-row">
+                        <span class="format-pill pill-rpm">RPM / DNF</span>
+                        <span class="format-pill pill-deb">DEB / APT</span>
+                        <span class="distro-pill">Rocky 10</span>
+                        <span class="distro-pill">Alma 10</span>
+                        <span class="distro-pill">Fedora 44</span>
+                        <span class="distro-pill">Debian 13</span>
+                        <span class="distro-pill">Ubuntu 24</span>
+                    </div>
+                    <p class="pkg-desc">Official package and desktop launcher utility for Google Antigravity IDE across Enterprise Linux, Fedora 44, Debian 13, and Ubuntu 24.</p>
+                    <div class="pkg-cmd-container">
+                        <div class="pkg-cmd-header">
+                            <span class="cmd-label">Install Command</span>
+                            <div class="card-cmd-tabs" role="tablist">
+                                <button class="cmd-tab-btn cmd-tab-dnf active" onclick="switchCardCmd('antigravity-ide', 'dnf', this)">DNF</button>
+                                <button class="cmd-tab-btn cmd-tab-apt" onclick="switchCardCmd('antigravity-ide', 'apt', this)">APT</button>
+                            </div>
+                        </div>
+                        <div class="pkg-install" id="cmdbox-antigravity-ide-dnf">
+                            <code>sudo dnf install antigravity-ide</code>
+                            <button class="copy-btn" onclick="copySnippet('sudo dnf install antigravity-ide', this)" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
+                        </div>
+                        <div class="pkg-install" id="cmdbox-antigravity-ide-apt" style="display: none;">
+                            <code>sudo apt install antigravity-ide</code>
+                            <button class="copy-btn" onclick="copySnippet('sudo apt install antigravity-ide', this)" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
+                        </div>
                     </div>
                     <div class="pkg-footer">
                         <span class="pkg-status-badge">Production Ready</span>
@@ -1223,88 +1441,8 @@
                     </div>
                 </div>
 
-                <!-- Package 2: Rocky Linux Setup -->
-                <div class="pkg-card">
-                    <div class="pkg-top">
-                        <div class="pkg-header-main">
-                            <a href="https://wheelhouser.com/products/rocky-linux-setup.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Rocky Linux Setup Product Details">
-                                <img src="assets/icons/rocky-linux-setup.svg" alt="Rocky Linux Setup icon" class="pkg-icon">
-                            </a>
-                            <div class="pkg-title-group">
-                                <a href="https://wheelhouser.com/products/rocky-linux-setup.html" target="_blank" rel="noopener" class="pkg-title-link" title="View Rocky Linux Setup Product Details">
-                                    <span class="pkg-title">rocky-linux-setup</span>
-                                    <svg class="pkg-link-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                                </a>
-                                <span class="pkg-vendor">Wheelhouser LLC</span>
-                            </div>
-                        </div>
-                        <span class="pkg-arch">el10</span>
-                    </div>
-                    <p class="pkg-desc">Post-install workstation optimization, automatic repository coordinator (CRB, EPEL), developer toolchains, and management CLI.</p>
-                    <div class="pkg-install">
-                        <code>sudo dnf install rocky-linux-setup</code>
-                        <button class="copy-btn" onclick="copySnippet('sudo dnf install rocky-linux-setup', this)" title="Copy command" aria-label="Copy to clipboard">
-                            <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            <span class="copy-label">Copy</span>
-                        </button>
-                    </div>
-                    <div class="pkg-footer">
-                        <span class="pkg-status-badge">Production Ready</span>
-                        <a href="https://wheelhouser.com/products/rocky-linux-setup.html" target="_blank" rel="noopener" class="pkg-product-btn">
-                            <span>Product Details &amp; CLI</span>
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Package 3: Web Browser -->
-                <div class="pkg-card">
-                    <div class="pkg-top">
-                        <div class="pkg-header-main">
-                            <a href="https://wheelhouser.com/products/web-browser.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Web Browser Product Details">
-                                <img src="assets/icons/web-browser.png" alt="Web Browser icon" class="pkg-icon">
-                            </a>
-                            <div class="pkg-title-group">
-                                <a href="https://wheelhouser.com/products/web-browser.html" target="_blank" rel="noopener" class="pkg-title-link" title="View Web Browser Product Details">
-                                    <span class="pkg-title">web-browser</span>
-                                    <svg class="pkg-link-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                                </a>
-                                <span class="pkg-vendor">Wheelhouser LLC</span>
-                            </div>
-                        </div>
-                        <span class="pkg-arch">el10 / fc44</span>
-                    </div>
-                    <p class="pkg-desc">Fast, lightweight, privacy-focused desktop web browser with native dark mode and PySide6/QtWebEngine desktop integration.</p>
-                    <div class="pkg-install">
-                        <code>sudo dnf install web-browser</code>
-                        <button class="copy-btn" onclick="copySnippet('sudo dnf install web-browser', this)" title="Copy command" aria-label="Copy to clipboard">
-                            <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            <span class="copy-label">Copy</span>
-                        </button>
-                    </div>
-                    <div class="pkg-footer">
-                        <span class="pkg-status-badge">Production Ready</span>
-                        <a href="https://wheelhouser.com/products/web-browser.html" target="_blank" rel="noopener" class="pkg-product-btn">
-                            <span>Product Details &amp; Screenshots</span>
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Package 4: Text Editor -->
-                <div class="pkg-card">
+                <!-- Package 2: Text Editor -->
+                <div class="pkg-card" data-pkg="text-editor">
                     <div class="pkg-top">
                         <div class="pkg-header-main">
                             <a href="https://wheelhouser.com/products/text-editor.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Text Editor Product Details">
@@ -1318,25 +1456,171 @@
                                 <span class="pkg-vendor">Wheelhouser LLC</span>
                             </div>
                         </div>
-                        <span class="pkg-arch">el10 / fc44</span>
+                        <div class="pkg-badges">
+                            <span class="pkg-version-badge">v0.14.2</span>
+                            <span class="pkg-arch">noarch</span>
+                        </div>
                     </div>
-                    <p class="pkg-desc">Professional desktop text editor with code folding, multi-cursor editing, syntax highlighting, and customizable themes.</p>
-                    <div class="pkg-install">
-                        <code>sudo dnf install text-editor</code>
-                        <button class="copy-btn" onclick="copySnippet('sudo dnf install text-editor', this)" title="Copy command" aria-label="Copy to clipboard">
-                            <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            <span class="copy-label">Copy</span>
-                        </button>
+                    <div class="pkg-tags-row">
+                        <span class="format-pill pill-rpm">RPM / DNF</span>
+                        <span class="format-pill pill-deb-planned">DEB (Planned)</span>
+                        <span class="distro-pill">Rocky 10</span>
+                        <span class="distro-pill">Alma 10</span>
+                        <span class="distro-pill">Fedora 44</span>
+                    </div>
+                    <p class="pkg-desc">Professional desktop text editor with code folding, multi-cursor editing, syntax highlighting across 15+ languages, and customizable themes.</p>
+                    <div class="pkg-cmd-container">
+                        <div class="pkg-cmd-header">
+                            <span class="cmd-label">Install Command</span>
+                            <div class="card-cmd-tabs" role="tablist">
+                                <button class="cmd-tab-btn cmd-tab-dnf active" onclick="switchCardCmd('text-editor', 'dnf', this)">DNF</button>
+                                <button class="cmd-tab-btn cmd-tab-apt" onclick="switchCardCmd('text-editor', 'apt', this)">APT</button>
+                            </div>
+                        </div>
+                        <div class="pkg-install" id="cmdbox-text-editor-dnf">
+                            <code>sudo dnf install text-editor</code>
+                            <button class="copy-btn" onclick="copySnippet('sudo dnf install text-editor', this)" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
+                        </div>
+                        <div class="pkg-status-notice" id="cmdbox-text-editor-apt" style="display: none;">
+                            <span>📦 RPM package live &bull; DEB build scheduled via Orchestra</span>
+                            <span class="distro-pill" style="margin: 0;">el10 / fc44</span>
+                        </div>
                     </div>
                     <div class="pkg-footer">
                         <span class="pkg-status-badge">Production Ready</span>
                         <a href="https://wheelhouser.com/products/text-editor.html" target="_blank" rel="noopener" class="pkg-product-btn">
+                            <span>Product Details &amp; Screenshots</span>
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 3: Rocky Linux Setup -->
+                <div class="pkg-card" data-pkg="rocky-linux-setup">
+                    <div class="pkg-top">
+                        <div class="pkg-header-main">
+                            <a href="https://wheelhouser.com/products/rocky-linux-setup.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Rocky Linux Setup Product Details">
+                                <img src="assets/icons/rocky-linux-setup.svg" alt="Rocky Linux Setup icon" class="pkg-icon">
+                            </a>
+                            <div class="pkg-title-group">
+                                <a href="https://wheelhouser.com/products/rocky-linux-setup.html" target="_blank" rel="noopener" class="pkg-title-link" title="View Rocky Linux Setup Product Details">
+                                    <span class="pkg-title">rocky-linux-setup</span>
+                                    <svg class="pkg-link-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <span class="pkg-vendor">Wheelhouser LLC</span>
+                            </div>
+                        </div>
+                        <div class="pkg-badges">
+                            <span class="pkg-version-badge">v1.0.0</span>
+                            <span class="pkg-arch">el10</span>
+                        </div>
+                    </div>
+                    <div class="pkg-tags-row">
+                        <span class="format-pill pill-rpm">RPM / DNF</span>
+                        <span class="distro-pill">Rocky Linux 10</span>
+                    </div>
+                    <p class="pkg-desc">Post-install workstation optimization, automatic repository coordinator (CRB, EPEL), developer toolchains, and management CLI.</p>
+                    <div class="pkg-cmd-container">
+                        <div class="pkg-cmd-header">
+                            <span class="cmd-label">Install Command</span>
+                            <div class="card-cmd-tabs" role="tablist">
+                                <button class="cmd-tab-btn cmd-tab-dnf active" onclick="switchCardCmd('rocky-linux-setup', 'dnf', this)">DNF</button>
+                                <button class="cmd-tab-btn cmd-tab-apt" onclick="switchCardCmd('rocky-linux-setup', 'apt', this)">APT</button>
+                            </div>
+                        </div>
+                        <div class="pkg-install" id="cmdbox-rocky-linux-setup-dnf">
+                            <code>sudo dnf install rocky-linux-setup</code>
+                            <button class="copy-btn" onclick="copySnippet('sudo dnf install rocky-linux-setup', this)" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
+                        </div>
+                        <div class="pkg-status-notice" id="cmdbox-rocky-linux-setup-apt" style="display: none;">
+                            <span>⚙️ Dedicated Enterprise Linux (EL10) system configuration utility</span>
+                            <span class="distro-pill" style="margin: 0;">el10 only</span>
+                        </div>
+                    </div>
+                    <div class="pkg-footer">
+                        <span class="pkg-status-badge">Production Ready</span>
+                        <a href="https://wheelhouser.com/products/rocky-linux-setup.html" target="_blank" rel="noopener" class="pkg-product-btn">
+                            <span>Product Details &amp; CLI</span>
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 4: Web Browser -->
+                <div class="pkg-card" data-pkg="web-browser">
+                    <div class="pkg-top">
+                        <div class="pkg-header-main">
+                            <a href="https://wheelhouser.com/products/web-browser.html" target="_blank" rel="noopener" class="pkg-icon-wrap" title="View Web Browser Product Details">
+                                <img src="assets/icons/web-browser.png" alt="Web Browser icon" class="pkg-icon">
+                            </a>
+                            <div class="pkg-title-group">
+                                <a href="https://wheelhouser.com/products/web-browser.html" target="_blank" rel="noopener" class="pkg-title-link" title="View Web Browser Product Details">
+                                    <span class="pkg-title">web-browser</span>
+                                    <svg class="pkg-link-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <span class="pkg-vendor">Wheelhouser LLC</span>
+                            </div>
+                        </div>
+                        <div class="pkg-badges">
+                            <span class="pkg-version-badge">v0.14.1</span>
+                            <span class="pkg-arch">noarch</span>
+                        </div>
+                    </div>
+                    <div class="pkg-tags-row">
+                        <span class="format-pill pill-rpm">RPM / DNF</span>
+                        <span class="format-pill pill-deb-planned">DEB (Planned)</span>
+                        <span class="distro-pill">Rocky 10</span>
+                        <span class="distro-pill">Alma 10</span>
+                        <span class="distro-pill">Fedora 44</span>
+                    </div>
+                    <p class="pkg-desc">Fast, lightweight, privacy-focused desktop web browser with native dark mode and PySide6/QtWebEngine desktop integration.</p>
+                    <div class="pkg-cmd-container">
+                        <div class="pkg-cmd-header">
+                            <span class="cmd-label">Install Command</span>
+                            <div class="card-cmd-tabs" role="tablist">
+                                <button class="cmd-tab-btn cmd-tab-dnf active" onclick="switchCardCmd('web-browser', 'dnf', this)">DNF</button>
+                                <button class="cmd-tab-btn cmd-tab-apt" onclick="switchCardCmd('web-browser', 'apt', this)">APT</button>
+                            </div>
+                        </div>
+                        <div class="pkg-install" id="cmdbox-web-browser-dnf">
+                            <code>sudo dnf install web-browser</code>
+                            <button class="copy-btn" onclick="copySnippet('sudo dnf install web-browser', this)" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
+                        </div>
+                        <div class="pkg-status-notice" id="cmdbox-web-browser-apt" style="display: none;">
+                            <span>📦 RPM package live &bull; DEB build scheduled via Orchestra</span>
+                            <span class="distro-pill" style="margin: 0;">el10 / fc44</span>
+                        </div>
+                    </div>
+                    <div class="pkg-footer">
+                        <span class="pkg-status-badge">Production Ready</span>
+                        <a href="https://wheelhouser.com/products/web-browser.html" target="_blank" rel="noopener" class="pkg-product-btn">
                             <span>Product Details &amp; Screenshots</span>
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </a>
@@ -1351,9 +1635,13 @@
                 <h3>Direct Repository Files</h3>
                 <p>Direct download access to configuration templates and raw GPG signing keys:</p>
                 <ul class="info-links">
-                    <li><a href="/rocky.repo" download>📄 rocky.repo (DNF Config)</a></li>
-                    <li><a href="/almalinux.repo" download>📄 almalinux.repo (DNF Config)</a></li>
-                    <li><a href="/fedora.repo" download>📄 fedora.repo (DNF Config)</a></li>
+                    <li><a href="/rocky.repo" download>📄 rocky.repo (DNF Config &bull; Rocky 10)</a></li>
+                    <li><a href="/almalinux.repo" download>📄 almalinux.repo (DNF Config &bull; Alma 10)</a></li>
+                    <li><a href="/fedora.repo" download>📄 fedora.repo (DNF Config &bull; Fedora 44)</a></li>
+                    <li><a href="/debian.sources" download>📄 debian.sources (APT DEB822 &bull; Debian 13)</a></li>
+                    <li><a href="/ubuntu.sources" download>📄 ubuntu.sources (APT DEB822 &bull; Ubuntu 24)</a></li>
+                    <li><a href="/debian.list" download>📄 debian.list (APT Sources List &bull; Debian 13)</a></li>
+                    <li><a href="/ubuntu.list" download>📄 ubuntu.list (APT Sources List &bull; Ubuntu 24)</a></li>
                     <li><a href="/steve-rock-wheelhouser-gpg.key" download>🔑 steve-rock-wheelhouser-gpg.key (GPG Public Key)</a></li>
                 </ul>
             </div>
@@ -1369,7 +1657,7 @@
 
             <div class="info-box">
                 <h3>Cryptographic Verification</h3>
-                <p>All RPM packages and <code>repodata/repomd.xml</code> metadata files are signed with Wheelhouser LLC's official 4096-bit RSA packaging key.</p>
+                <p>All RPM and DEB packages, repository metadata (<code>repomd.xml.asc</code>), and APT release indexes (<code>InRelease</code> / <code>Release.gpg</code>) are cryptographically signed with Wheelhouser LLC's official 4096-bit RSA packaging key.</p>
                 <p style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--accent-green);">Key ID: 310B962A &bull; Fingerprint verified</p>
             </div>
         </section>
@@ -1391,12 +1679,81 @@
     </footer>
 
     <script>
+        let currentPkgManager = 'dnf';
+
         function switchTab(distro) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-            document.getElementById('tab-' + distro).classList.add('active');
-            document.getElementById('content-' + distro).classList.add('active');
+            const tab = document.getElementById('tab-' + distro);
+            const content = document.getElementById('content-' + distro);
+            if (tab) {
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+            }
+            if (content) {
+                content.classList.add('active');
+            }
+
+            // Sync the package manager filter with the selected distribution
+            if (distro === 'debian' || distro === 'ubuntu') {
+                setGlobalPkgManager('apt');
+            } else {
+                setGlobalPkgManager('dnf');
+            }
+        }
+
+        function setGlobalPkgManager(mgr) {
+            currentPkgManager = mgr;
+            const btnDnf = document.getElementById('btn-pm-dnf');
+            const btnApt = document.getElementById('btn-pm-apt');
+            if (btnDnf && btnApt) {
+                btnDnf.classList.toggle('active', mgr === 'dnf');
+                btnApt.classList.toggle('active', mgr === 'apt');
+            }
+
+            document.querySelectorAll('.pkg-card').forEach(card => {
+                const pkg = card.getAttribute('data-pkg');
+                if (!pkg) return;
+                const dnfBox = document.getElementById('cmdbox-' + pkg + '-dnf');
+                const aptBox = document.getElementById('cmdbox-' + pkg + '-apt');
+                const tabDnf = card.querySelector('.cmd-tab-dnf');
+                const tabApt = card.querySelector('.cmd-tab-apt');
+
+                if (mgr === 'apt') {
+                    if (dnfBox) dnfBox.style.display = 'none';
+                    if (aptBox) aptBox.style.display = 'flex';
+                    if (tabDnf) tabDnf.classList.remove('active');
+                    if (tabApt) tabApt.classList.add('active');
+                } else {
+                    if (dnfBox) dnfBox.style.display = 'flex';
+                    if (aptBox) aptBox.style.display = 'none';
+                    if (tabDnf) tabDnf.classList.add('active');
+                    if (tabApt) tabApt.classList.remove('active');
+                }
+            });
+        }
+
+        function switchCardCmd(pkg, mgr, btn) {
+            const card = btn.closest('.pkg-card');
+            if (!card) return;
+
+            const dnfBox = document.getElementById('cmdbox-' + pkg + '-dnf');
+            const aptBox = document.getElementById('cmdbox-' + pkg + '-apt');
+            const tabs = card.querySelectorAll('.cmd-tab-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (mgr === 'apt') {
+                if (dnfBox) dnfBox.style.display = 'none';
+                if (aptBox) aptBox.style.display = 'flex';
+            } else {
+                if (dnfBox) dnfBox.style.display = 'flex';
+                if (aptBox) aptBox.style.display = 'none';
+            }
         }
 
         function copyCode(elementId, btn) {

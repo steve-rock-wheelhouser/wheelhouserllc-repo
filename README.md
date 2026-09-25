@@ -1,12 +1,12 @@
-# Wheelhouser LLC Custom Linux RPM Repository
+# Wheelhouser LLC Linux Package Repository (RPM & APT)
 
-This is the unified multi-distribution RPM repository for Wheelhouser LLC's Linux applications and utilities, supporting **Enterprise Linux (Rocky Linux 10, AlmaLinux 10)** and **Fedora 44** across multiple architectures (`x86_64`, `aarch64`).
+This is the unified multi-distribution package repository for Wheelhouser LLC's Linux applications and utilities, supporting both **RPM (DNF)** for **Enterprise Linux (Rocky Linux 10, AlmaLinux 10)** and **Fedora 44**, and **DEB (APT)** for **Debian 13 (Trixie)** and **Ubuntu 24** across architectures (`x86_64`, `aarch64`, `all`).
 
 ---
 
 ## Repository Architecture
 
-Packages are organized in a clean hierarchical layout adhering to [AGENTS.md Section 7](https://github.com/steve-rock-wheelhouser/wheelhouserllc-repo):
+Packages and repositories are organized in a clean hierarchical layout:
 ```text
 wheelhouserllc-repo/
 ├── rocky/
@@ -21,10 +21,24 @@ wheelhouserllc-repo/
 │   └── 44/
 │       ├── x86_64/
 │       └── aarch64/
+├── debian/
+│   └── 13/
+│       ├── *.deb
+│       ├── Packages (.gz)
+│       └── Release (.gpg, InRelease)
+├── ubuntu/
+│   └── 24/
+│       ├── *.deb
+│       ├── Packages (.gz)
+│       └── Release (.gpg, InRelease)
 ├── steve-rock-wheelhouser-gpg.key
 ├── rocky.repo
 ├── almalinux.repo
 ├── fedora.repo
+├── debian.sources
+├── ubuntu.sources
+├── debian.list
+├── ubuntu.list
 ├── index.html
 ├── CNAME
 ├── .nojekyll
@@ -65,7 +79,7 @@ sudo curl -sL https://repo.wheelhouser.com/almalinux.repo -o /etc/yum.repos.d/wh
 
 ---
 
-### Fedora
+### Fedora 44
 
 #### Option A: Install via Release Bootstrap RPM (Recommended)
 ```bash
@@ -88,11 +102,12 @@ sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://repo.wheelhouser.com/steve-rock-wheelhouser-gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/wheelhouser.gpg
 sudo chmod a+r /etc/apt/keyrings/wheelhouser.gpg
 
-# 2. Add repository source (Debian 13)
+# 2. Add repository source
+# For Debian 13:
 echo "deb [signed-by=/etc/apt/keyrings/wheelhouser.gpg] https://repo.wheelhouser.com/debian/13 ./" | sudo tee /etc/apt/sources.list.d/wheelhouser.list
 
-# For Ubuntu 24, use:
-# echo "deb [signed-by=/etc/apt/keyrings/wheelhouser.gpg] https://repo.wheelhouser.com/ubuntu/24 ./" | sudo tee /etc/apt/sources.list.d/wheelhouser.list
+# For Ubuntu 24:
+echo "deb [signed-by=/etc/apt/keyrings/wheelhouser.gpg] https://repo.wheelhouser.com/ubuntu/24 ./" | sudo tee /etc/apt/sources.list.d/wheelhouser.list
 
 # 3. Update index and install packages
 sudo apt update
@@ -103,19 +118,23 @@ sudo apt install antigravity-ide
 
 ## 2. Available Packages
 
-Once the repository is configured:
+Once the repository is configured on your system:
 
-* **`antigravity-ide`**: Open-source packaging and launcher utility for Google Antigravity IDE (Rocky Linux 10, AlmaLinux 10, Fedora 44).
-  ```bash
-  sudo dnf install antigravity-ide
-  ```
+* **`antigravity-ide`** (`v1.0.0-38`): Open-source packaging and launcher utility for Google Antigravity IDE (Rocky Linux 10, AlmaLinux 10, Fedora 44, Debian 13, Ubuntu 24).
+  * **DNF (RPM):** `sudo dnf install antigravity-ide`
+  * **APT (DEB):** `sudo apt install antigravity-ide`
 
-* **`rocky-linux-setup`**: Post-install workstation optimization, bootstrap, and system configuration utility (Rocky Linux 10).
-  ```bash
-  sudo dnf install rocky-linux-setup
-  ```
+* **`text-editor`** (`v0.14.2`): Professional desktop text editor with code folding, multi-cursor editing, and syntax highlighting across 15+ programming languages.
+  * **DNF (RPM):** `sudo dnf install text-editor`
 
-* **`web-browser`**: Fast, lightweight, privacy-focused desktop web browser (Fedora 44).
-  ```bash
-  sudo dnf install web-browser
-  ```
+* **`rocky-linux-setup`** (`v1.0.0`): Post-install workstation optimization, bootstrap, and system configuration utility (Rocky Linux 10).
+  * **DNF (RPM):** `sudo dnf install rocky-linux-setup`
+
+* **`web-browser`** (`v0.14.1`): Fast, lightweight, privacy-focused desktop web browser with PySide6/QtWebEngine desktop integration.
+  * **DNF (RPM):** `sudo dnf install web-browser`
+
+---
+
+## 3. Cryptographic Verification
+
+All RPM packages and `repodata/repomd.xml` metadata files, as well as all DEB packages and APT release indexes (`InRelease`, `Release.gpg`), are cryptographically signed with Wheelhouser LLC's official 4096-bit RSA packaging key (`310B962A`).
