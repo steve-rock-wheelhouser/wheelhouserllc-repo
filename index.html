@@ -1580,16 +1580,18 @@
                             </div>
                         </div>
                         <div class="pkg-badges">
-                            <span class="pkg-version-badge">v0.14.1</span>
-                            <span class="pkg-arch">noarch</span>
+                            <span class="pkg-version-badge">v0.15.0</span>
+                            <span class="pkg-arch">noarch &bull; all</span>
                         </div>
                     </div>
                     <div class="pkg-tags-row">
                         <span class="format-pill pill-rpm">RPM / DNF</span>
-                        <span class="format-pill pill-deb-planned">DEB (Planned)</span>
+                        <span class="format-pill pill-deb">DEB / APT</span>
                         <span class="distro-pill">Rocky 10</span>
                         <span class="distro-pill">Alma 10</span>
                         <span class="distro-pill">Fedora 44</span>
+                        <span class="distro-pill">Debian 13</span>
+                        <span class="distro-pill">Ubuntu 26.04 LTS</span>
                     </div>
                     <p class="pkg-desc">Fast, lightweight, privacy-focused desktop web browser with native dark mode and PySide6/QtWebEngine desktop integration.</p>
                     <div class="pkg-cmd-container">
@@ -1613,9 +1615,18 @@
                                 <span class="copy-label">Copy</span>
                             </button>
                         </div>
-                        <div class="pkg-status-notice" id="cmdbox-web-browser-apt" style="display: none;">
-                            <span>📦 RPM package live &bull; DEB build scheduled via Orchestra</span>
-                            <span class="distro-pill" style="margin: 0;">el10 / fc44</span>
+                        <div class="pkg-install" id="cmdbox-web-browser-apt" style="display: none;">
+                            <code>sudo apt install web-browser</code>
+                            <button class="copy-btn" onclick="copySnippet('sudo apt install web-browser', this)" title="Copy command" aria-label="Copy to clipboard">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="copy-label">Copy</span>
+                            </button>
                         </div>
                     </div>
                     <div class="pkg-footer">
