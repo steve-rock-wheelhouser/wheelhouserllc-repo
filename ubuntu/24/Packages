@@ -1,4 +1,28 @@
 Package: antigravity-ide
+Version: 1.0.0-38
+Section: devel
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: curl, tar, xdg-utils, desktop-file-utils, libnotify4, libxkbfile1, libgbm1, libnss3, gnome-keyring, libsecret-1-0, libasound2t64 | libasound2
+Provides: antigravity (= 1.0.0-38)
+Replaces: antigravity (<= 1.0.0-12)
+Conflicts: antigravity (<= 1.0.0-12)
+Homepage: https://wheelhouser.com/products/antigravity-ide.html
+Description: Advanced AI-Powered Agentic Coding & Development Suite
+ This Linux wrapper/installer from Wheelhouser LLC simplifies and automates the
+ installation of Antigravity IDE, Google's next-generation integrated development
+ environment and intelligent coding companion. Powered by autonomous
+ AI agentic architecture, Antigravity IDE empowers developers to create, debug,
+ refactor, and test complex software systems with speed and confidence.
+Filename: antigravity-ide_1.0.0-38_all.deb
+Size: 377418
+MD5sum: f013b45be5b37d6b842c52055aaaea39
+SHA1: 5e7edc18609d01e9b7a04d380711dd0f8ef60589
+SHA256: 9e6cd015d4f7a9aa64c72c56afa63fafad950183c0024a57447dd87d045987c7
+
+Package: antigravity-ide
 Version: 1.0.0-37
 Section: devel
 Priority: optional
@@ -21,27 +45,3 @@ Size: 377346
 MD5sum: 3f3c7d369374a7f6464b35a4cad26b56
 SHA1: 90bdc8c2c53879d1f2b29cc22f39f80dfc9492db
 SHA256: 1eb1dcb8f6d1eddd11d43104e18bf57b50708640eb7f021e0b75c7c08d46e4e2
-
-Package: antigravity-ide
-Version: 1.0.0-34
-Section: devel
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Depends: curl, tar, xdg-utils, desktop-file-utils, libnotify4, libxss1, libxkbfile1, libgbm1, libnss3, gnome-keyring, libsecret-1-0, libasound2t64 | libasound2
-Provides: antigravity (= 1.0.0-34)
-Replaces: antigravity (<= 1.0.0-12)
-Conflicts: antigravity (<= 1.0.0-12)
-Homepage: https://wheelhouser.com/products/antigravity-ide.html
-Description: Advanced AI-Powered Agentic Coding & Development Suite
- This Linux wrapper/installer from Wheelhouser LLC simplifies and automates the
- installation of Antigravity IDE, Google's next-generation integrated development
- environment and intelligent coding companion. Powered by autonomous
- AI agentic architecture, Antigravity IDE empowers developers to create, debug,
- refactor, and test complex software systems with speed and confidence.
-Filename: antigravity-ide_1.0.0-34_all.deb
-Size: 376586
-MD5sum: a33c36ecc855ebf98a3afacf62c08699
-SHA1: 91ce082c1450636a0caf44ced44bd44d14eb298b
-SHA256: 80fdbea72f0b637369eec7bc9f981fdcbf2d7ecbf5b74b3cec16e81b6aa1e198
