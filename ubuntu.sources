@@ -1,0 +1,4 @@
+Types: deb
+URIs: https://repo.wheelhouser.com/ubuntu/26.04
+Suites: ./
+Signed-By: /etc/apt/keyrings/wheelhouser.gpg
