@@ -1,3 +1,41 @@
+Package: git-tools
+Version: 1.5.0-3
+Section: devel
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Wheelhouser LLC <developer@wheelhouser.com>
+Depends: git, bash, python3
+Provides: wheelhouser-git-tools (= 1.5.0-3)
+Homepage: https://wheelhouser.com
+Description: Wheelhouser Git Tools - Cross-Platform Git Automation Suite
+ Unified enterprise Git workflow automation providing standardized push, pull,
+ branch tracking, and pre-commit security audits.
+Filename: git-tools_1.5.0-3_all.deb
+Size: 140844
+MD5sum: 6d774523748fd92b8fa5b8063ab78691
+SHA1: 44cacc77a4082be161d737f772e431e81659da84
+SHA256: 1b7917c7f8078a98358340897ada928d9a36530f84f455a5a7548a455383088f
+
+Package: git-tools
+Version: 1.4.1-5
+Section: devel
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Wheelhouser LLC <developer@wheelhouser.com>
+Depends: git, bash, python3
+Provides: wheelhouser-git-tools (= 1.4.1-5)
+Homepage: https://wheelhouser.com
+Description: Wheelhouser Git Tools - Cross-Platform Git Automation Suite
+ Unified enterprise Git workflow automation providing standardized push, pull,
+ branch tracking, and pre-commit security audits.
+Filename: git-tools_1.4.1-5_all.deb
+Size: 107838
+MD5sum: 81fb4d71d42bf7198532c091f81143e5
+SHA1: d6c761ff04336207b28e2faec9bfc1ca7444be12
+SHA256: 04cb16b7135c85a96f2615b2e657e5c13867fe0e5759f7b30bd57cabd1b1a03e
+
 Package: auto-updates
 Version: 1.4.1-1
 Section: admin
@@ -45,25 +83,6 @@ Size: 29844
 MD5sum: 2966f970e0671e1d36d1e3317b79e141
 SHA1: b38973596f0c8fb3767385779290df93a6efdb6a
 SHA256: 6553848e6edf316390df5e9c8ecc1eb67dd93bf6a3e72235d4d2d48deb9db62d
-
-Package: git-tools
-Version: 1.4.1-5
-Section: devel
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Wheelhouser LLC <developer@wheelhouser.com>
-Depends: git, bash, python3
-Provides: wheelhouser-git-tools (= 1.4.1-5)
-Homepage: https://wheelhouser.com
-Description: Wheelhouser Git Tools - Cross-Platform Git Automation Suite
- Unified enterprise Git workflow automation providing standardized push, pull,
- branch tracking, and pre-commit security audits.
-Filename: git-tools_1.4.1-5_all.deb
-Size: 107838
-MD5sum: 81fb4d71d42bf7198532c091f81143e5
-SHA1: d6c761ff04336207b28e2faec9bfc1ca7444be12
-SHA256: 04cb16b7135c85a96f2615b2e657e5c13867fe0e5759f7b30bd57cabd1b1a03e
 
 Package: web-browser
 Version: 0.17.4-1
