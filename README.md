@@ -144,6 +144,10 @@ Once the repository is configured on your system:
   * **DNF (RPM):** `sudo dnf install auto-updates`
   * **APT (DEB):** `sudo apt install auto-updates`
 
+* **`git-tools`** (`v1.4.1`): Cross-Platform Git Automation and Security Suite with automated push/pull workflows, interactive terminal fleet dashboard for ~/Projects, and pre-flight credential leak protection.
+  * **DNF (RPM):** `sudo dnf install git-tools`
+  * **APT (DEB):** `sudo apt install git-tools`
+
 ---
 
 ## 3. Cryptographic Verification
