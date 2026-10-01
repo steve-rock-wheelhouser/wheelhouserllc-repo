@@ -1,21 +1,26 @@
-Package: git-tools
-Version: 1.4.1-5
-Section: devel
+Package: auto-updates
+Version: 1.4.1-1
+Section: admin
 Priority: optional
 Architecture: all
 Essential: no
-Maintainer: Wheelhouser LLC <developer@wheelhouser.com>
-Depends: git, bash, python3
-Provides: wheelhouser-git-tools (= 1.4.1-5)
-Homepage: https://wheelhouser.com
-Description: Wheelhouser Git Tools - Cross-Platform Git Automation Suite
- Unified enterprise Git workflow automation providing standardized push, pull,
- branch tracking, and pre-commit security audits.
-Filename: git-tools_1.4.1-5_all.deb
-Size: 107838
-MD5sum: 81fb4d71d42bf7198532c091f81143e5
-SHA1: d6c761ff04336207b28e2faec9bfc1ca7444be12
-SHA256: 04cb16b7135c85a96f2615b2e657e5c13867fe0e5759f7b30bd57cabd1b1a03e
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Installed-Size: 228
+Depends: unattended-upgrades, systemd, bash (>= 4.0), coreutils, sed, gawk, logrotate
+Homepage: https://github.com/steve-rock-wheelhouser/auto-updates
+Description: Automated system updater for Debian, Ubuntu, Fedora, and RHEL
+ auto-updates is a CLI utility and systemd service that configures and
+ manages automated updates out-of-the-box.
+ .
+ By default, it enables daily security updates at 03:30 AM local time.
+ It supports flexible update modes (security, all, or weekly-all),
+ configurable reboot policies with compiler/build safety deferral guards,
+ and real-time system status inspection.
+Filename: auto-updates_1.4.1-1_all.deb
+Size: 31828
+MD5sum: 4d910a18586e2dc5ef32f994d3aa175e
+SHA1: 875e3086f08c4e1cd6a867b267dd9f93ae562ce2
+SHA256: 6fbc2bbc1ec21e909e70ecd63b33e232c1469c3fd4284e1a94b95cbc71937993
 
 Package: auto-updates
 Version: 1.3.2-1
@@ -41,29 +46,24 @@ MD5sum: 2966f970e0671e1d36d1e3317b79e141
 SHA1: b38973596f0c8fb3767385779290df93a6efdb6a
 SHA256: 6553848e6edf316390df5e9c8ecc1eb67dd93bf6a3e72235d4d2d48deb9db62d
 
-Package: auto-updates
-Version: 1.2.4-1
-Section: admin
+Package: git-tools
+Version: 1.4.1-5
+Section: devel
 Priority: optional
 Architecture: all
 Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Installed-Size: 224
-Depends: unattended-upgrades, systemd, bash (>= 4.0), coreutils, sed, gawk, logrotate
-Homepage: https://github.com/steve-rock-wheelhouser/auto-updates
-Description: Automated system updater for Debian, Ubuntu, Fedora, and RHEL
- auto-updates is a CLI utility and systemd service that configures and
- manages automated updates out-of-the-box.
- .
- By default, it enables daily security updates at 03:30 AM local time.
- It supports flexible update modes (security, all, or weekly-all),
- configurable reboot policies with compiler/build safety deferral guards,
- and real-time system status inspection.
-Filename: auto-updates_1.2.4-1_all.deb
-Size: 29670
-MD5sum: 33e4dd7670c180f3234ee313ce0b9af2
-SHA1: cc05f283d9338be7a0bbc4920399ff8768a2ae8e
-SHA256: 6399b7e4834ba89fdbd7d2dbd3695e5886ccd2ebdb4272e4c6fdb21155f9e0a9
+Maintainer: Wheelhouser LLC <developer@wheelhouser.com>
+Depends: git, bash, python3
+Provides: wheelhouser-git-tools (= 1.4.1-5)
+Homepage: https://wheelhouser.com
+Description: Wheelhouser Git Tools - Cross-Platform Git Automation Suite
+ Unified enterprise Git workflow automation providing standardized push, pull,
+ branch tracking, and pre-commit security audits.
+Filename: git-tools_1.4.1-5_all.deb
+Size: 107838
+MD5sum: 81fb4d71d42bf7198532c091f81143e5
+SHA1: d6c761ff04336207b28e2faec9bfc1ca7444be12
+SHA256: 04cb16b7135c85a96f2615b2e657e5c13867fe0e5759f7b30bd57cabd1b1a03e
 
 Package: web-browser
 Version: 0.17.4-1
