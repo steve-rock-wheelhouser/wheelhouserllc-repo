@@ -1,3 +1,25 @@
+Package: text-editor
+Version: 0.14.2-1
+Section: editors
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: python3, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-requests, python3-cryptography, python3-platformdirs, desktop-file-utils, hicolor-icon-theme
+Recommends: python3-pyspellchecker
+Provides: wheelhouser-text-editor (= 0.14.2-1)
+Homepage: https://wheelhouser.com
+Description: Fast, modern desktop text editor with syntax highlighting and code folding
+ Wheelhouser Text Editor is a professional desktop text editor built with
+ Python and PySide6. It features native dark mode, tabbed editing, code folding,
+ multi-cursor editing, syntax highlighting across multiple programming languages,
+ customizable themes, and plugin support.
+Filename: text-editor_0.14.2-1_all.deb
+Size: 24445380
+MD5sum: bdc87a93d3515475206034ca1f8f0fa1
+SHA1: 87b3facdee952bbc90d3e5762ae5779ae44877aa
+SHA256: 8cbd546ad7e45f35f615e30090b3e2b495e93bed7f27cc942201c262e7f1359f
+
 Package: git-tools
 Version: 1.6.0-2
 Section: devel
