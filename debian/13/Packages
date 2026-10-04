@@ -1,3 +1,51 @@
+Package: auto-updates
+Version: 1.4.3-1
+Section: admin
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Installed-Size: 232
+Depends: unattended-upgrades, systemd, bash (>= 4.0), coreutils, sed, gawk, logrotate
+Homepage: https://github.com/steve-rock-wheelhouser/auto-updates
+Description: Automated system updater for Debian, Ubuntu, Fedora, and RHEL
+ auto-updates is a CLI utility and systemd service that configures and
+ manages automated updates out-of-the-box.
+ .
+ By default, it enables daily security updates at 03:30 AM local time.
+ It supports flexible update modes (security, all, or weekly-all),
+ configurable reboot policies with compiler/build safety deferral guards,
+ and real-time system status inspection.
+Filename: auto-updates_1.4.3-1_all.deb
+Size: 31648
+MD5sum: 6b0620cbe815d0b1ce0d1918c2d18e0c
+SHA1: 2e61dedb5da3b18c4a59af98d28c2d7f2fc9e367
+SHA256: 29c5f608687ce81664266b1f883c72c94cfa7cc4cf3b887bdb63f6b8eee8f0ea
+
+Package: auto-updates
+Version: 1.4.1-1
+Section: admin
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Installed-Size: 228
+Depends: unattended-upgrades, systemd, bash (>= 4.0), coreutils, sed, gawk, logrotate
+Homepage: https://github.com/steve-rock-wheelhouser/auto-updates
+Description: Automated system updater for Debian, Ubuntu, Fedora, and RHEL
+ auto-updates is a CLI utility and systemd service that configures and
+ manages automated updates out-of-the-box.
+ .
+ By default, it enables daily security updates at 03:30 AM local time.
+ It supports flexible update modes (security, all, or weekly-all),
+ configurable reboot policies with compiler/build safety deferral guards,
+ and real-time system status inspection.
+Filename: auto-updates_1.4.1-1_all.deb
+Size: 31364
+MD5sum: 18bc1cd9f8fe319e27276084863c0332
+SHA1: 2bbff40ac1671bf750fabc4bab2a9aef2aa058e8
+SHA256: 70682663dac127f87a787fd4edf26f99b212ce19932f9e239dc1c98c6c042eef
+
 Package: text-editor
 Version: 0.14.2-1
 Section: editors
@@ -97,54 +145,6 @@ Size: 30655252
 MD5sum: bc0e92272e946dcb02c89210166e80f4
 SHA1: 4107ad71405669142a26ef0cdf8c5fd8e370c844
 SHA256: 39c781ea65b1ddeaa67ec59e1f89a54fa3ac705290128b8f176cea5d1aac3b0e
-
-Package: auto-updates
-Version: 1.4.1-1
-Section: admin
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Installed-Size: 228
-Depends: unattended-upgrades, systemd, bash (>= 4.0), coreutils, sed, gawk, logrotate
-Homepage: https://github.com/steve-rock-wheelhouser/auto-updates
-Description: Automated system updater for Debian, Ubuntu, Fedora, and RHEL
- auto-updates is a CLI utility and systemd service that configures and
- manages automated updates out-of-the-box.
- .
- By default, it enables daily security updates at 03:30 AM local time.
- It supports flexible update modes (security, all, or weekly-all),
- configurable reboot policies with compiler/build safety deferral guards,
- and real-time system status inspection.
-Filename: auto-updates_1.4.1-1_all.deb
-Size: 31364
-MD5sum: 18bc1cd9f8fe319e27276084863c0332
-SHA1: 2bbff40ac1671bf750fabc4bab2a9aef2aa058e8
-SHA256: 70682663dac127f87a787fd4edf26f99b212ce19932f9e239dc1c98c6c042eef
-
-Package: auto-updates
-Version: 1.3.2-1
-Section: admin
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Installed-Size: 224
-Depends: unattended-upgrades, systemd, bash (>= 4.0), coreutils, sed, gawk, logrotate
-Homepage: https://github.com/steve-rock-wheelhouser/auto-updates
-Description: Automated system updater for Debian, Ubuntu, Fedora, and RHEL
- auto-updates is a CLI utility and systemd service that configures and
- manages automated updates out-of-the-box.
- .
- By default, it enables daily security updates at 03:30 AM local time.
- It supports flexible update modes (security, all, or weekly-all),
- configurable reboot policies with compiler/build safety deferral guards,
- and real-time system status inspection.
-Filename: auto-updates_1.3.2-1_all.deb
-Size: 29404
-MD5sum: 051e58ac671b570481d3b8fa2d244b91
-SHA1: 175246214ef5b5aa2735e865b9a4fe41ba4aa17b
-SHA256: 2084a7633d93f75213275bffaf7a553ac1c0a1e3d205b105eb0b5f62d9dd3b8f
 
 Package: antigravity-ide
 Version: 1.0.0-38
