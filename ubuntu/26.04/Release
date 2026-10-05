@@ -5,13 +5,13 @@ Codename: 26.04
 Architectures: all amd64
 Components: main
 Description: Wheelhouser LLC Ubuntu 26.04 Package Repository
-Date: Sun, 04 Oct 2026 15:56:00 GMT
+Date: Mon, 05 Oct 2026 20:34:13 GMT
 MD5Sum:
- 13b249ecca9ab5359a8fca7944c26ce3 8943 Packages
- a84decbc8b7023d10029820085746a49 2681 Packages.gz
+ caaa111141ee0c8c9ec5d4c58a315516 9971 Packages
+ 0c55344b5df988c242d3423181218dcb 2923 Packages.gz
 SHA1:
- a23cbb8e829545ef4f49daad8d930e32fc1430d2 8943 Packages
- 0fecf7aa237c6edca52946cd620aa449b63a577b 2681 Packages.gz
+ 853a217dc025c79eb3fddfb5e3964e7728ced794 9971 Packages
+ 530ac5e83c61f9e243543abf337f2f12718255b8 2923 Packages.gz
 SHA256:
- ba4b7d343bb35ca8b51d915b77c70ea777c34c3761a5a41a837513461b9c5c0d 8943 Packages
- 0f19af01b874f36723bfd48ca369b0d597370c972015a5882ca6cb6ccd964445 2681 Packages.gz
+ 3420c19f8767f3958145239d73e1acaa075510ea89f3139ef0d5ec6f2bad21b9 9971 Packages
+ b05fd0947eccc52f7fc2908eb3980cd4cdbeda49f9bd0c08aeeff74b010f5751 2923 Packages.gz
