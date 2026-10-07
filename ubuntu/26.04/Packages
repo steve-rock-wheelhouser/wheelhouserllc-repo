@@ -1,3 +1,41 @@
+Package: git-tools
+Version: 1.8.0-2
+Section: devel
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Wheelhouser LLC <developer@wheelhouser.com>
+Depends: git, bash, python3
+Provides: wheelhouser-git-tools (= 1.8.0-2)
+Homepage: https://wheelhouser.com
+Description: Wheelhouser Git Tools - Cross-Platform Git Automation Suite
+ Unified enterprise Git workflow automation providing standardized push, pull,
+ branch tracking, and pre-commit security audits.
+Filename: git-tools_1.8.0-2_all.deb
+Size: 164556
+MD5sum: 686b3098529fd0cf346a2d061eb6edc0
+SHA1: 52b9f8b36ca58cc7ce5129ee90bdb204998fa6d4
+SHA256: 3bf8207c3e22df46561ad85763c4546c5e0e6394c495fba49e580ff8a1ac34f2
+
+Package: git-tools
+Version: 1.6.0-2
+Section: devel
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Wheelhouser LLC <developer@wheelhouser.com>
+Depends: git, bash, python3
+Provides: wheelhouser-git-tools (= 1.6.0-2)
+Homepage: https://wheelhouser.com
+Description: Wheelhouser Git Tools - Cross-Platform Git Automation Suite
+ Unified enterprise Git workflow automation providing standardized push, pull,
+ branch tracking, and pre-commit security audits.
+Filename: git-tools_1.6.0-2_all.deb
+Size: 148042
+MD5sum: 3bae9057cd8315991c9b7336b354e986
+SHA1: e902573e856691017b6150333673cb9ebdc61f06
+SHA256: 4c82ce7f941ba38212c160fe7d944bd4b9d2b1d1c90ae34991858f693cae0e0d
+
 Package: terminal
 Version: 0.32.0-2
 Section: utils
@@ -129,44 +167,6 @@ Size: 24445380
 MD5sum: bdc87a93d3515475206034ca1f8f0fa1
 SHA1: 87b3facdee952bbc90d3e5762ae5779ae44877aa
 SHA256: 8cbd546ad7e45f35f615e30090b3e2b495e93bed7f27cc942201c262e7f1359f
-
-Package: git-tools
-Version: 1.6.0-2
-Section: devel
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Wheelhouser LLC <developer@wheelhouser.com>
-Depends: git, bash, python3
-Provides: wheelhouser-git-tools (= 1.6.0-2)
-Homepage: https://wheelhouser.com
-Description: Wheelhouser Git Tools - Cross-Platform Git Automation Suite
- Unified enterprise Git workflow automation providing standardized push, pull,
- branch tracking, and pre-commit security audits.
-Filename: git-tools_1.6.0-2_all.deb
-Size: 148042
-MD5sum: 3bae9057cd8315991c9b7336b354e986
-SHA1: e902573e856691017b6150333673cb9ebdc61f06
-SHA256: 4c82ce7f941ba38212c160fe7d944bd4b9d2b1d1c90ae34991858f693cae0e0d
-
-Package: git-tools
-Version: 1.5.0-3
-Section: devel
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Wheelhouser LLC <developer@wheelhouser.com>
-Depends: git, bash, python3
-Provides: wheelhouser-git-tools (= 1.5.0-3)
-Homepage: https://wheelhouser.com
-Description: Wheelhouser Git Tools - Cross-Platform Git Automation Suite
- Unified enterprise Git workflow automation providing standardized push, pull,
- branch tracking, and pre-commit security audits.
-Filename: git-tools_1.5.0-3_all.deb
-Size: 140844
-MD5sum: 6d774523748fd92b8fa5b8063ab78691
-SHA1: 44cacc77a4082be161d737f772e431e81659da84
-SHA256: 1b7917c7f8078a98358340897ada928d9a36530f84f455a5a7548a455383088f
 
 Package: web-browser
 Version: 0.21.0-1
