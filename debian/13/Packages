@@ -1,3 +1,23 @@
+Package: terminal
+Version: 0.32.0-1
+Section: utils
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: python3, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-requests, python3-cryptography, python3-platformdirs, python3-websockets, python3-psutil, desktop-file-utils, hicolor-icon-theme
+Provides: wheelhouser-terminal (= 0.32.0-1)
+Homepage: https://wheelhouser.com
+Description: Fast, modern, and feature-rich cross-platform terminal emulator
+ Wheelhouser Terminal is a hardware-accelerated terminal emulator built with
+ Python and PySide6. It features multi-tab workspaces, split views, ANSI/VT100
+ emulation, custom themes, persistent command history, and built-in Unix commands.
+Filename: terminal_0.32.0-1_all.deb
+Size: 48393736
+MD5sum: f3f98d5ce079e27d088a740ce3dab64b
+SHA1: adabcf4e7c5aa7eb714a108a123d384c661388b8
+SHA256: e47be96581affbdbbe946b1213e5c2954712dae51ffc27a20ef08e0e8c7b4c36
+
 Package: file-browser
 Version: 0.9.3-1
 Section: utils
