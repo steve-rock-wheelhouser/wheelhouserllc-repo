@@ -1,3 +1,45 @@
+Package: file-browser
+Version: 0.9.5-1
+Section: utils
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: python3, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-requests, python3-cryptography, python3-platformdirs, python3-websockets, python3-psutil, desktop-file-utils, hicolor-icon-theme
+Provides: wheelhouser-file-browser (= 0.9.5-1)
+Homepage: https://wheelhouser.com
+Description: Fast, modern, and feature-rich cross-platform file browser
+ Wheelhouser File Browser is a professional desktop file manager built with
+ Python and PySide6. It features dual-pane browsing, quick access navigation,
+ integrated terminal emulator, native dark mode, tabbed directories, bookmarking,
+ and archive inspection.
+Filename: file-browser_0.9.5-1_all.deb
+Size: 15071618
+MD5sum: 66f7a21f03e155013cae550afb1a25f6
+SHA1: bafb951b576a27b1237c9734217352db677947d3
+SHA256: 40e390435b9fa46af1344f427c55a8a26392680269ee4d08513432e2671cd7ce
+
+Package: file-browser
+Version: 0.9.4-1
+Section: utils
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: python3, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-requests, python3-cryptography, python3-platformdirs, python3-websockets, python3-psutil, desktop-file-utils, hicolor-icon-theme
+Provides: wheelhouser-file-browser (= 0.9.4-1)
+Homepage: https://wheelhouser.com
+Description: Fast, modern, and feature-rich cross-platform file browser
+ Wheelhouser File Browser is a professional desktop file manager built with
+ Python and PySide6. It features dual-pane browsing, quick access navigation,
+ integrated terminal emulator, native dark mode, tabbed directories, bookmarking,
+ and archive inspection.
+Filename: file-browser_0.9.4-1_all.deb
+Size: 24640700
+MD5sum: cedd5e97389434e1cf69cd244c298cf4
+SHA1: b9bc2a55137cb7e39b2e21d1441b7e86759e1f13
+SHA256: e245ae175ff8dbfcde639ef74935d898a7fe54db63887bb99b8129a01b4a7230
+
 Package: web-browser
 Version: 0.23.0-1
 Section: web
@@ -37,48 +79,6 @@ Size: 30181048
 MD5sum: f1bc65c7132aa0518f3f3c475eb73634
 SHA1: 3714ce45084ca2e44368331dddd177a07b6075dd
 SHA256: 88212d083aa556390541b6e6bff3ec69e4779d22b5efb75152bf8c504cd93896
-
-Package: file-browser
-Version: 0.9.4-1
-Section: utils
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Depends: python3, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-requests, python3-cryptography, python3-platformdirs, python3-websockets, python3-psutil, desktop-file-utils, hicolor-icon-theme
-Provides: wheelhouser-file-browser (= 0.9.4-1)
-Homepage: https://wheelhouser.com
-Description: Fast, modern, and feature-rich cross-platform file browser
- Wheelhouser File Browser is a professional desktop file manager built with
- Python and PySide6. It features dual-pane browsing, quick access navigation,
- integrated terminal emulator, native dark mode, tabbed directories, bookmarking,
- and archive inspection.
-Filename: file-browser_0.9.4-1_all.deb
-Size: 24640700
-MD5sum: cedd5e97389434e1cf69cd244c298cf4
-SHA1: b9bc2a55137cb7e39b2e21d1441b7e86759e1f13
-SHA256: e245ae175ff8dbfcde639ef74935d898a7fe54db63887bb99b8129a01b4a7230
-
-Package: file-browser
-Version: 0.9.3-1
-Section: utils
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Depends: python3, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-requests, python3-cryptography, python3-platformdirs, python3-websockets, python3-psutil, desktop-file-utils, hicolor-icon-theme
-Provides: wheelhouser-file-browser (= 0.9.3-1)
-Homepage: https://wheelhouser.com
-Description: Fast, modern, and feature-rich cross-platform file browser
- Wheelhouser File Browser is a professional desktop file manager built with
- Python and PySide6. It features dual-pane browsing, quick access navigation,
- integrated terminal emulator, native dark mode, tabbed directories, bookmarking,
- and archive inspection.
-Filename: file-browser_0.9.3-1_all.deb
-Size: 15068448
-MD5sum: 629f2d700b0d1ab422153ea3af16f0e0
-SHA1: ae73adb3a3f7e58beebb802adbf7ac7f39c73fe0
-SHA256: 94182f33ad5ab61074f7a4fd9efd96471b8532341ebcb3bd03a6b1947a140fa8
 
 Package: git-tools
 Version: 1.8.0-2
