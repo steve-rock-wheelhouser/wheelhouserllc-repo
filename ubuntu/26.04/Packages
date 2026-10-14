@@ -1,3 +1,23 @@
+Package: terminal
+Version: 0.32.0-2
+Section: utils
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: python3, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-requests, python3-cryptography, python3-platformdirs, python3-websockets, python3-psutil, desktop-file-utils, hicolor-icon-theme
+Provides: wheelhouser-terminal (= 0.32.0-2)
+Homepage: https://wheelhouser.com
+Description: Fast, modern, and feature-rich cross-platform terminal emulator
+ Wheelhouser Terminal is a hardware-accelerated terminal emulator built with
+ Python and PySide6. It features multi-tab workspaces, split views, ANSI/VT100
+ emulation, custom themes, persistent command history, and built-in Unix commands.
+Filename: terminal_0.32.0-2_all.deb
+Size: 26999474
+MD5sum: 0e03ddfd53007a605e881abaf3da7297
+SHA1: 2a78884b4dda666fc843ba952d6c6cac3563bc6b
+SHA256: 779d9261fb2d19ae5c2bf191be632b6b150e991fe15c0896dacc1e25b906675f
+
 Package: file-browser
 Version: 0.10.0-1
 Section: utils
@@ -117,26 +137,6 @@ Size: 30181048
 MD5sum: f1bc65c7132aa0518f3f3c475eb73634
 SHA1: 3714ce45084ca2e44368331dddd177a07b6075dd
 SHA256: 88212d083aa556390541b6e6bff3ec69e4779d22b5efb75152bf8c504cd93896
-
-Package: terminal
-Version: 0.32.0-2
-Section: utils
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Depends: python3, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-requests, python3-cryptography, python3-platformdirs, python3-websockets, python3-psutil, desktop-file-utils, hicolor-icon-theme
-Provides: wheelhouser-terminal (= 0.32.0-2)
-Homepage: https://wheelhouser.com
-Description: Fast, modern, and feature-rich cross-platform terminal emulator
- Wheelhouser Terminal is a hardware-accelerated terminal emulator built with
- Python and PySide6. It features multi-tab workspaces, split views, ANSI/VT100
- emulation, custom themes, persistent command history, and built-in Unix commands.
-Filename: terminal_0.32.0-2_all.deb
-Size: 26999474
-MD5sum: 0e03ddfd53007a605e881abaf3da7297
-SHA1: 2a78884b4dda666fc843ba952d6c6cac3563bc6b
-SHA256: 779d9261fb2d19ae5c2bf191be632b6b150e991fe15c0896dacc1e25b906675f
 
 Package: auto-updates
 Version: 1.4.3-1
