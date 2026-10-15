@@ -1,3 +1,43 @@
+Package: web-browser
+Version: 0.24.0-1
+Section: web
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: python3, python3-pyside6.qtwebenginewidgets | python3-pyside6, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-pyside6.qtsvgwidgets | python3-pyside6, python3-cryptography, python3-requests, python3-platformdirs, python3-websockets, ffmpeg, desktop-file-utils, hicolor-icon-theme
+Provides: wheelhouser-web-browser (= 0.24.0-1)
+Homepage: https://wheelhouser.com/products/web-browser.html
+Description: Fast, modern, privacy-focused desktop web browser
+ Wheelhouser Web Browser is a modern desktop browser built with Python and
+ PySide6/QtWebEngine, featuring native dark mode, tabbed browsing, integrated
+ media streaming, robust privacy protections, and rich bookmark management.
+Filename: web-browser_0.24.0-1_all.deb
+Size: 30175456
+MD5sum: f1cdce83840acf9242187897552a9092
+SHA1: cde154144f44decb5947e0a17cde67cf9fc02133
+SHA256: e2506a2eccc202499930883c5776803988b0cc304e13b8fbe2f59936bf43b740
+
+Package: web-browser
+Version: 0.23.0-1
+Section: web
+Priority: optional
+Architecture: all
+Essential: no
+Maintainer: Steve Rock <steve.rock@wheelhouser.com>
+Depends: python3, python3-pyside6.qtwebenginewidgets | python3-pyside6, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-pyside6.qtsvgwidgets | python3-pyside6, python3-cryptography, python3-requests, python3-platformdirs, python3-websockets, ffmpeg, desktop-file-utils, hicolor-icon-theme
+Provides: wheelhouser-web-browser (= 0.23.0-1)
+Homepage: https://wheelhouser.com/products/web-browser.html
+Description: Fast, modern, privacy-focused desktop web browser
+ Wheelhouser Web Browser is a modern desktop browser built with Python and
+ PySide6/QtWebEngine, featuring native dark mode, tabbed browsing, integrated
+ media streaming, robust privacy protections, and rich bookmark management.
+Filename: web-browser_0.23.0-1_all.deb
+Size: 30175360
+MD5sum: f936cd5c65a0dfe497810221de069c7e
+SHA1: bc7f1b5a0f0e797f101ee0ec1df15bfc0241d2c1
+SHA256: b5910841d114eada1e4f7ef08280cf18915dcfa0bd8de2fba286cb049822d068
+
 Package: terminal
 Version: 0.32.0-2
 Section: utils
@@ -97,46 +137,6 @@ Size: 165470
 MD5sum: d1e8a5ac0b805573c33169a04d2e8dda
 SHA1: e714877901073126f8487e9c59ef44cca7dff453
 SHA256: 360df2339a61cbcb689fc4d43acdf9f0ff48bc8b54b8a9541202d09f675c806b
-
-Package: web-browser
-Version: 0.23.0-1
-Section: web
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Depends: python3, python3-pyside6.qtwebenginewidgets | python3-pyside6, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-pyside6.qtsvgwidgets | python3-pyside6, python3-cryptography, python3-requests, python3-platformdirs, python3-websockets, ffmpeg, desktop-file-utils, hicolor-icon-theme
-Provides: wheelhouser-web-browser (= 0.23.0-1)
-Homepage: https://wheelhouser.com/products/web-browser.html
-Description: Fast, modern, privacy-focused desktop web browser
- Wheelhouser Web Browser is a modern desktop browser built with Python and
- PySide6/QtWebEngine, featuring native dark mode, tabbed browsing, integrated
- media streaming, robust privacy protections, and rich bookmark management.
-Filename: web-browser_0.23.0-1_all.deb
-Size: 30175360
-MD5sum: f936cd5c65a0dfe497810221de069c7e
-SHA1: bc7f1b5a0f0e797f101ee0ec1df15bfc0241d2c1
-SHA256: b5910841d114eada1e4f7ef08280cf18915dcfa0bd8de2fba286cb049822d068
-
-Package: web-browser
-Version: 0.21.0-1
-Section: web
-Priority: optional
-Architecture: all
-Essential: no
-Maintainer: Steve Rock <steve.rock@wheelhouser.com>
-Depends: python3, python3-pyside6.qtwebenginewidgets | python3-pyside6, python3-pyside6.qtwidgets | python3-pyside6, python3-pyside6.qtsvg | python3-pyside6, python3-pyside6.qtsvgwidgets | python3-pyside6, python3-cryptography, python3-requests, python3-platformdirs, python3-websockets, python3-ecdsa, ffmpeg, desktop-file-utils, hicolor-icon-theme
-Provides: wheelhouser-web-browser (= 0.21.0-1)
-Homepage: https://wheelhouser.com/products/web-browser.html
-Description: Fast, modern, privacy-focused desktop web browser
- Wheelhouser Web Browser is a modern desktop browser built with Python and
- PySide6/QtWebEngine, featuring native dark mode, tabbed browsing, integrated
- media streaming, robust privacy protections, and rich bookmark management.
-Filename: web-browser_0.21.0-1_all.deb
-Size: 30181048
-MD5sum: f1bc65c7132aa0518f3f3c475eb73634
-SHA1: 3714ce45084ca2e44368331dddd177a07b6075dd
-SHA256: 88212d083aa556390541b6e6bff3ec69e4779d22b5efb75152bf8c504cd93896
 
 Package: auto-updates
 Version: 1.4.3-1
